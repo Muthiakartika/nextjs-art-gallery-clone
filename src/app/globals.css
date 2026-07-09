@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --background: #efe1ce;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-cormorant);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Light-only gallery design: keep a white canvas even when the OS/browser
+   prefers a dark color scheme, matching the reference site. */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+}
