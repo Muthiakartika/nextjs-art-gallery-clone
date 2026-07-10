@@ -1,21 +1,8 @@
 import Link from "next/link";
+import { NAV_ITEMS } from "@/components/navbar/navItems";
+import Container from "@/components/ui/Container";
 
 type FooterLink = { label: string; href: string };
-
-const shopLinks: FooterLink[] = [
-  { label: "Original Paintings", href: "/original-paintings" },
-  { label: "Artists", href: "/artists" },
-  { label: "Visit Us", href: "/visit-us" },
-  { label: "Blog", href: "/blog" },
-];
-
-const infoLinks: FooterLink[] = [
-  { label: "Privacy Policy", href: "/policies/privacy" },
-  { label: "Refund Policy", href: "/policies/refund" },
-  { label: "Shipping Policy", href: "/policies/shipping" },
-  { label: "Terms of Service", href: "/policies/terms" },
-  { label: "Terms of Sale", href: "/policies/terms-of-sale" },
-];
 
 const payments = [
   "Visa",
@@ -25,13 +12,13 @@ const payments = [
   "Klarna",
   "Apple Pay",
   "Shop Pay",
-  "CB",
+  "QRIS",
 ];
 
 function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-text">
         {title}
       </h3>
       <ul className="mt-4 space-y-2.5">
@@ -39,7 +26,7 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
           <li key={link.label}>
             <Link
               href={link.href}
-              className="text-sm text-neutral-600 transition-colors hover:text-[#8a5a3c]"
+              className="text-sm text-text-secondary transition-colors hover:text-accent"
             >
               {link.label}
             </Link>
@@ -50,53 +37,56 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
   );
 }
 
+// Footer is rendered globally from the Root Layout, so it appears on every
+// page automatically instead of being imported into each page individually.
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-200 bg-white">
-      <div className="mx-auto max-w-[1320px] px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-border bg-surface">
+      <Container className="py-16">
+        {/* Last column ("Location") sizes to its own content instead of
+            sharing an equal 1/4 share, so the ~320px map keeps its real
+            width instead of being squeezed by the grid. */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto]">
+          {/* Column 1: brand mark + short description. */}
           <div>
             <div className="flex flex-col leading-none">
-              <span className="text-lg font-semibold text-neutral-900">
-                La Chocolaterie
-              </span>
-              <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.35em] text-[#8a5a3c]">
+              <span className="text-lg font-semibold text-text">Satori</span>
+              <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.35em] text-accent">
                 Art Gallery
               </span>
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-600">
-              Original paintings from our Paris studio, carefully shipped
-              worldwide.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-secondary">
+              Original paintings, silver jewelry, and handcraft from our Ubud
+              studio, carefully shipped worldwide.
             </p>
           </div>
 
-          <FooterColumn title="Shop" links={shopLinks} />
-          <FooterColumn title="Information" links={infoLinks} />
+          {/* Column 2: reuses the same NAV_ITEMS as the navbar, so the
+              footer menu can never drift out of sync with the real nav. */}
+          <FooterColumn title="Main Menu" links={NAV_ITEMS} />
 
+          {/* Column 3: studio contact details. */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-900">
-              Visit Us
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-text">
+              Contact Info
             </h3>
-            <address className="mt-4 space-y-2 text-sm not-italic leading-relaxed text-neutral-600">
+            <address className="mt-4 space-y-2 text-sm not-italic leading-relaxed text-text-secondary">
               <p>
-                64 Rue Saint-Louis en l’Île,
+                Jl. Raya Sanggingan No. 21,
                 <br />
-                75004 Paris
+                Ubud, Gianyar, Bali 80571
               </p>
               <p>
-                <a
-                  href="mailto:contact@lachocolaterieartgallery.com"
-                  className="transition-colors hover:text-[#8a5a3c]"
-                >
-                  contact@lachocolaterieartgallery.com
+                <a href="tel:+62361123456" className="transition-colors hover:text-accent">
+                  +62 361 123 456
                 </a>
               </p>
               <p>
                 <a
-                  href="tel:+33786958055"
-                  className="transition-colors hover:text-[#8a5a3c]"
+                  href="mailto:hello@satoriartgallery.com"
+                  className="transition-colors hover:text-accent"
                 >
-                  07 86 95 80 55
+                  hello@satoriartgallery.com
                 </a>
               </p>
               <p>
@@ -104,31 +94,46 @@ export default function Footer() {
                   href="https://www.instagram.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="transition-colors hover:text-[#8a5a3c]"
+                  className="transition-colors hover:text-accent"
                 >
                   Instagram
                 </a>
               </p>
             </address>
           </div>
+
+          {/* Column 4: small map so visitors can find the studio at a glance. */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-text">
+              Location
+            </h3>
+            <div className="mt-4 h-[220px] w-[320px] max-w-full overflow-hidden border border-border">
+              <iframe
+                title="Satori Art Gallery location — Ubud, Bali"
+                src="https://maps.google.com/maps?q=Ubud%2C%20Bali%2C%20Indonesia&z=13&output=embed"
+                className="h-full w-full"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-neutral-200 pt-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-xs text-neutral-500">
-            © 2026, La Chocolaterie Art Gallery
+        <div className="mt-12 flex flex-col gap-6 border-t border-border pt-8 md:flex-row md:items-center md:justify-between">
+          <p className="text-xs text-muted">
+            © {new Date().getFullYear()}, Satori Art Gallery
           </p>
           <div className="flex flex-wrap gap-2">
             {payments.map((p) => (
               <span
                 key={p}
-                className="rounded border border-neutral-200 px-2 py-1 text-[10px] font-medium uppercase tracking-wide text-neutral-500"
+                className="rounded border border-border px-2 py-1 text-[10px] font-medium uppercase tracking-wide text-muted"
               >
                 {p}
               </span>
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

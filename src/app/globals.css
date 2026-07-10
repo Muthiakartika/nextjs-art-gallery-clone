@@ -1,22 +1,33 @@
 @import "tailwindcss";
 
-:root {
-  --background: #efe1ce;
-  --foreground: #171717;
+/* Warm-neutral art-gallery color system — focus color #EFE1CE.
+   Previous theme is backed up in /color-backup/theme-backup-*.zip */
+@theme {
+  --color-primary: #efe1ce;
+  --color-primary-hover: #e5d4bb;
+  --color-secondary: #c8b49a;
+  --color-accent: #7e8770;
+  --color-background: #f6efe3;
+  --color-section: #efe1ce;
+  --color-surface: #fbf7f0;
+  --color-border: #e3d6c2;
+  --color-text: #2b2926;
+  --color-text-secondary: #524e47;
+  --color-muted: #8b8377;
+  --color-ink-soft: #3c3833;
+  --color-link: #5f6753;
+  --color-link-hover: #474e3d;
+  --color-success: #4e7b58;
+  --color-error: #a0554a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-cormorant);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Light-only gallery design: keep a white canvas even when the OS/browser
-   prefers a dark color scheme, matching the reference site. */
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }

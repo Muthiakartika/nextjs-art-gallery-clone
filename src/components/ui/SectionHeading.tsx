@@ -22,14 +22,14 @@ export default function SectionHeading({
   return (
     <div className={`flex max-w-2xl flex-col gap-3 ${alignment} ${className}`}>
       {eyebrow && (
-        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#8a5a3c]">
+        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
           {eyebrow}
         </span>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
+      <h2 className="text-3xl font-semibold tracking-tight text-text sm:text-4xl">
         {title}
       </h2>
-      {description && <p className="text-neutral-600">{description}</p>}
+      {description && <p className="text-text-secondary">{description}</p>}
     </div>
   );
 }

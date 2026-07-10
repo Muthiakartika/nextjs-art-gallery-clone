@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const cormorant = Cormorant({
   variable: "--font-cormorant",
@@ -15,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "La Chocolaterie Art Gallery",
+  title: "Satori Art Gallery",
   description:
-    "Original paintings from our Paris studio, carefully shipped worldwide.",
+    "Original paintings, silver jewelry, and handcraft from our Ubud studio in Bali, carefully shipped worldwide.",
 };
 
 export default function RootLayout({
@@ -30,9 +31,12 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white text-neutral-900">
+      <body className="min-h-full flex flex-col bg-surface text-text">
         <Navbar />
         <div className="flex-1">{children}</div>
+        {/* Footer is rendered globally from the Root Layout, so every page
+            gets it automatically without importing it individually. */}
+        <Footer />
       </body>
     </html>
   );

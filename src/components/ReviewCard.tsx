@@ -15,29 +15,24 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-// Reusable Google-style review card.
+// Reusable testimonial card — one card is shown at a time by the Reviews slider.
 export default function ReviewCard({ review }: { review: Review }) {
   return (
-    <figure className="flex h-full flex-col gap-4 rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
-      <div className="flex items-center justify-between">
-        <Stars rating={review.rating} />
-        <span className="flex h-6 w-6 items-center justify-center rounded-full border border-neutral-200 text-sm font-bold text-[#4285F4]">
-          G
-        </span>
-      </div>
-      <blockquote className="flex-1 text-sm leading-relaxed text-neutral-700">
+    <figure className="flex h-full flex-col gap-4 rounded-none border border-border bg-surface p-6 shadow-sm sm:p-8">
+      <Stars rating={review.rating} />
+      <blockquote className="flex-1 text-base leading-relaxed text-text-secondary">
         “{review.text}”
       </blockquote>
-      <figcaption className="flex items-center gap-3 border-t border-neutral-100 pt-4">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#8a5a3c] text-sm font-semibold text-white">
+      <figcaption className="flex items-center gap-3 border-t border-border pt-4">
+        <span className="flex h-9 w-9 items-center justify-center rounded-none bg-text text-sm font-semibold text-background">
           {review.name.charAt(0)}
         </span>
         <div>
-          <div className="text-sm font-medium text-neutral-900">
+          <div className="text-sm font-medium text-text">
             {review.name}
           </div>
           {review.date && (
-            <div className="text-xs text-neutral-400">{review.date}</div>
+            <div className="text-xs text-muted">{review.date}</div>
           )}
         </div>
       </figcaption>

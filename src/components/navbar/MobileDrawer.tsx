@@ -1,13 +1,7 @@
-import Link from "next/link";
 import Brand from "@/components/navbar/Brand";
 import MobileNavItem from "@/components/navbar/MobileNavItem";
 import { NAV_ITEMS } from "@/components/navbar/navItems";
-import {
-  CloseIcon,
-  GlobeIcon,
-  InstagramIcon,
-  UserIcon,
-} from "@/components/ui/icons";
+import { CloseIcon, InstagramIcon } from "@/components/ui/icons";
 
 export default function MobileDrawer({
   open,
@@ -28,13 +22,13 @@ export default function MobileDrawer({
         }`}
       />
       <div
-        className={`absolute inset-y-0 left-0 flex w-[86%] max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 ${
+        className={`absolute inset-y-0 left-0 flex w-[86%] max-w-sm flex-col bg-surface shadow-2xl transition-transform duration-300 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-neutral-200 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <Brand />
-          <button type="button" onClick={onClose} className="p-1 text-neutral-700 hover:text-[#8a5a3c]" aria-label="Close menu">
+          <button type="button" onClick={onClose} className="p-1 text-text-secondary hover:text-accent" aria-label="Close menu">
             <CloseIcon className="h-6 w-6" />
           </button>
         </div>
@@ -47,20 +41,17 @@ export default function MobileDrawer({
           </ul>
         </nav>
 
-        <div className="space-y-3 border-t border-neutral-200 px-5 py-4">
-          <Link href="/account" onClick={onClose} className="inline-flex items-center gap-2 text-sm text-neutral-700 hover:text-[#8a5a3c]">
-            <UserIcon className="h-5 w-5" />
-            Log in
-          </Link>
-          <div className="flex items-center justify-between">
-            <button type="button" className="inline-flex items-center gap-2 text-sm text-neutral-700 hover:text-[#8a5a3c]" aria-label="Select region and currency">
-              <GlobeIcon className="h-4 w-4" />
-              France <span className="text-neutral-300">|</span> EUR €
-            </button>
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="text-neutral-700 hover:text-[#8a5a3c]" aria-label="Instagram">
-              <InstagramIcon className="h-5 w-5" />
-            </a>
-          </div>
+        <div className="border-t border-border px-5 py-4">
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent"
+            aria-label="Instagram"
+          >
+            <InstagramIcon className="h-5 w-5" />
+            Instagram
+          </a>
         </div>
       </div>
     </div>

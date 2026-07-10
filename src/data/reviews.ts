@@ -5,41 +5,24 @@ export type Review = {
   date?: string;
 };
 
+// Three featured reviews for the homepage slider.
 export const reviews: Review[] = [
   {
-    name: "Amelia Hart",
+    name: "Sophie Bennett",
     rating: 5,
-    text: "The painting is even more beautiful in person. Packaging was impeccable and it arrived in London within days.",
-    date: "2 weeks ago",
+    text: "The painting arrived beautifully packaged all the way to London, and it's even more striking in person. Working with the Satori team felt personal from start to finish.",
+    date: "3 weeks ago",
   },
   {
-    name: "Julien Faure",
+    name: "Hiroshi Tanaka",
     rating: 5,
-    text: "A wonderful family of artists. Visiting the studio in Paris was the highlight of our trip.",
+    text: "I visited the studio in Ubud during a trip to Bali and left with a silver ring I still wear every day. Wonderful craftsmanship and a real story behind every piece.",
     date: "1 month ago",
   },
   {
-    name: "Sarah Klein",
+    name: "Emma Johansson",
     rating: 5,
-    text: "I bought my first original here and the guidance made it so easy. I love it every single day.",
-    date: "1 month ago",
-  },
-  {
-    name: "Marco Rossi",
-    rating: 5,
-    text: "Exceptional quality and a fair price. Shipping to Italy was fast and perfectly insured.",
+    text: "Our woven wall hanging is the first thing guests notice in our home. Shipping to Stockholm was smooth and the quality exceeded what we expected.",
     date: "2 months ago",
-  },
-  {
-    name: "Chloé Dubois",
-    rating: 5,
-    text: "Every piece tells a story. The team helped me find one that fit my apartment perfectly.",
-    date: "3 months ago",
-  },
-  {
-    name: "David Chen",
-    rating: 5,
-    text: "Shipped all the way to Singapore without a scratch. A truly personal buying experience.",
-    date: "3 months ago",
   },
 ];

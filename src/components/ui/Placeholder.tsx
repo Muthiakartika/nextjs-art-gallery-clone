@@ -17,12 +17,12 @@ const aspects: Record<Aspect, string> = {
 
 // Warm gradient swatches used while real artwork images are unavailable.
 const gradients = [
-  "linear-gradient(135deg,#e9dfd3,#c3a988)",
-  "linear-gradient(135deg,#d9c7b8,#a98e77)",
-  "linear-gradient(135deg,#e3d5c8,#b89b86)",
-  "linear-gradient(135deg,#efe7dc,#c9b39c)",
-  "linear-gradient(135deg,#d8c3b0,#8a5a3c)",
-  "linear-gradient(135deg,#e7ddd0,#9c8064)",
+  "linear-gradient(135deg,#efe1ce,#c8b49a)",
+  "linear-gradient(135deg,#e3d6c2,#b9a98f)",
+  "linear-gradient(135deg,#e8e3d7,#a7a394)",
+  "linear-gradient(135deg,#ded5c6,#8b8377)",
+  "linear-gradient(135deg,#e6ddd0,#9aa088)",
+  "linear-gradient(135deg,#efe6d8,#bfb6a3)",
 ];
 
 // Decorative placeholder standing in for a missing image. Keeps a subtle

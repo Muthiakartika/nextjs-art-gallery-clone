@@ -9,7 +9,7 @@ export default function Collections() {
         <SectionHeading
           eyebrow="Collections"
           title="Explore the Collections"
-          description="Find the perfect piece by theme — from the streets of Paris to bold abstract statements."
+          description="Find the perfect piece by theme — from Bali's rice terraces to bold abstract statements."
         />
       </div>
 

@@ -5,23 +5,23 @@ export type Faq = {
 
 export const faqs: Faq[] = [
   {
-    question: "Are all the paintings original?",
+    question: "Are all the pieces original and handmade?",
     answer:
-      "Yes — every artwork we sell is a one-of-a-kind original, hand-painted in our Paris studio. We never sell prints or reproductions, and each piece is signed by the artist.",
+      "Yes — every painting, silver piece, and handcrafted object we sell is one-of-a-kind, made by hand in our Ubud studio and by artisans we work with across Bali. We never sell mass-produced reproductions.",
   },
   {
-    question: "Can I see the artworks in person?",
+    question: "Can I visit the gallery in person?",
     answer:
-      "Absolutely. You are welcome to visit our atelier on the Île Saint-Louis in Paris to see the paintings in person. Get in touch and we'll arrange a convenient time.",
+      "Of course. Our gallery and studio are open daily in Ubud, Bali. Stop by to see the paintings, silverwork, and handcraft up close, or get in touch to arrange a visit.",
   },
   {
     question: "Do you ship internationally?",
     answer:
-      "Yes, we carefully pack and ship worldwide. Each painting is insured and tracked from our studio to your door, wherever you are.",
+      "Yes, we carefully pack and ship worldwide. Every piece is insured and tracked from Bali to your door, wherever you are.",
   },
   {
-    question: "How do I know which artwork is right for me?",
+    question: "How do I know which piece is right for me?",
     answer:
-      "We're happy to help. Tell us about your space and what draws you to a piece, and we'll offer personalized recommendations so you can choose with confidence.",
+      "We're happy to help. Tell us about your space and what draws you to a piece — whether a painting, a silver design, or a handcrafted object — and we'll offer personalized recommendations so you can choose with confidence.",
   },
 ];

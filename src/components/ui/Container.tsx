@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 
-// Single shared page wrapper: centered, ~1320px max width, responsive gutters.
-// Used by every section so they all line up to the same width.
+// Shared container used across every section.
+// Centered, ~1320px max width, with responsive horizontal padding, so every
+// section (and the Footer) lines up to the exact same left/right edges.
 export default function Container({
   children,
   className = "",

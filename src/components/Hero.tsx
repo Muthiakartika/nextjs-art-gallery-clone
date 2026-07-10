@@ -6,7 +6,7 @@ import Placeholder from "@/components/ui/Placeholder";
 // Cormorant); a row of framed placeholders stands in for the studio photo.
 export default function Hero() {
   return (
-    <section className="relative isolate flex min-h-[560px] items-center justify-center overflow-hidden md:min-h-[640px]">
+    <section className="relative isolate flex min-h-[560px] items-center justify-center overflow-hidden md:min-h-[640px] mt-[100px]">
       {/* Gallery-wall backdrop */}
       <div className="absolute inset-0 -z-10">
         <div
@@ -16,7 +16,7 @@ export default function Hero() {
           }}
         />
         {/* Framed paintings hung on the wall */}
-        <div className="absolute inset-0 flex items-center justify-center gap-6 opacity-40">
+        {/* <div className="absolute inset-0 flex items-center justify-center gap-6 opacity-40">
           {[0, 1, 2, 3, 4].map((i) => (
             <Placeholder
               key={i}
@@ -26,7 +26,7 @@ export default function Hero() {
               className="w-40 shrink-0 shadow-2xl sm:w-52"
             />
           ))}
-        </div>
+        </div> */}
         {/* Darkening overlay for legibility */}
         <div className="absolute inset-0 bg-black/60" />
       </div>
@@ -34,7 +34,7 @@ export default function Hero() {
       {/* Centered text overlay */}
       <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
         <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
-          Original Paintings from Our Paris Art Gallery
+          Original Paintings from Our Bali Art Gallery
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/85">
           A family of artists creating unique paintings from our studio. Each
@@ -42,8 +42,8 @@ export default function Hero() {
         </p>
         <div className="mt-8 flex justify-center">
           <Button
-            href="/original-paintings"
-            variant="primary"
+            href="/gallery#paintings"
+            variant="light"
             className="px-9 py-3.5 text-base"
           >
             Explore Originals
