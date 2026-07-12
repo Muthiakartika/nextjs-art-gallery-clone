@@ -10,6 +10,9 @@ type ButtonProps = {
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  // Cuma berlaku untuk varian <button> (tidak ada versi "disabled" untuk
+  // link), dipakai misalnya oleh ContactForm saat request masih berjalan.
+  disabled?: boolean;
 };
 
 const base =
@@ -33,6 +36,7 @@ export default function Button({
   className = "",
   type = "button",
   onClick,
+  disabled = false,
 }: ButtonProps) {
   const classes = `${base} ${variants[variant]} ${className}`;
 
@@ -45,7 +49,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} disabled={disabled} className={classes}>
       {children}
     </button>
   );

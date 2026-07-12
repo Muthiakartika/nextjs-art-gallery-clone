@@ -39,6 +39,7 @@ export default function AboutPage() {
           aspect="landscape"
           seed={3}
           rounded="rounded-2xl"
+          tags="artstudio,painter,workshop"
           className="shadow-xl"
         />
         <div className="flex flex-col gap-5 text-text-secondary">

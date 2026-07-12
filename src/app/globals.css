@@ -31,3 +31,69 @@ body {
   color: var(--color-text);
   font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }
+
+/* Slideshow latar belakang Hero (lihat Hero.tsx): beberapa foto full-bleed
+   ditumpuk (absolute inset-0) di atas satu sama lain, lalu bergantian
+   tampil lewat animasi opacity. Semua foto memakai keyframe + durasi yang
+   SAMA, tapi animation-delay-nya berbeda-beda (diberi lewat inline style
+   di Hero.tsx) sehingga urutan munculnya bergantian rapi, bukan tumpuk.
+   Persentase di bawah mengasumsikan 4 foto (tiap foto "kebagian jatah"
+   25% dari satu putaran penuh). */
+@keyframes heroFade {
+  0% {
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  22% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-slide {
+  opacity: 0;
+  animation-name: heroFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Efek "Ken Burns": foto perlahan membesar (zoom) selama tampil, supaya
+   tetap terasa "bergerak" walau ukurannya sudah selebar+setinggi section. */
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+.hero-slide-img {
+  animation-name: heroZoom;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Hormati preferensi pengguna yang tidak suka animasi/gerakan: tampilkan
+   foto pertama saja secara statis, tanpa crossfade maupun zoom. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide-img {
+    animation: none;
+  }
+
+  .hero-slide {
+    opacity: 0;
+  }
+
+  .hero-slide:first-child {
+    opacity: 1;
+  }
+}

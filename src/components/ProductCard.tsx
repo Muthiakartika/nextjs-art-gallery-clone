@@ -3,6 +3,15 @@ import Placeholder from "@/components/ui/Placeholder";
 import { formatPrice } from "@/lib/format";
 import type { Product } from "@/data/products";
 
+// Kata kunci foto dummy per kategori, supaya foto produk yang tampil
+// relevan (lukisan untuk "paintings", perhiasan untuk "silver-jewelry",
+// dst), bukan foto acak apa pun.
+const CATEGORY_IMAGE_TAGS: Record<string, string> = {
+  paintings: "painting,canvas,art",
+  "silver-jewelry": "jewelry,silver,ring",
+  handcraft: "woodcarving,craft,handmade",
+};
+
 // Reusable gallery item card — used on the homepage's category previews,
 // the /gallery overview page, and each /products/[category] page.
 export default function ProductCard({
@@ -19,12 +28,17 @@ export default function ProductCard({
       href={`/products/${category}`}
       className="group flex flex-col"
     >
-      <div className="relative overflow-hidden rounded-none">
+      {/* Bingkai putih 3px di sekeliling foto produk, seperti bingkai foto
+          fisik. Ditaruh di wrapper (bukan di Placeholder) supaya hanya
+          gambar produk yang punya bingkai ini, bukan semua pemakaian
+          Placeholder di halaman lain (Collections, BrandStory, About). */}
+      <div className="relative overflow-hidden rounded-none border-[3px] border-white">
         <Placeholder
           label={product.title}
           aspect="portrait"
           seed={index}
           rounded="rounded-none"
+          tags={CATEGORY_IMAGE_TAGS[category] ?? CATEGORY_IMAGE_TAGS.paintings}
           className="transition-transform duration-500 group-hover:scale-105"
         />
         {product.soldOut && (

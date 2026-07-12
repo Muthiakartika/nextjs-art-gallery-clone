@@ -3,11 +3,16 @@
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 
+// idle: belum kirim | sending: request lagi jalan | success: terkirim
+// error: gagal (pesan error ditampilkan supaya pengguna bisa coba lagi)
+type Status = "idle" | "sending" | "success" | "error";
+
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="border border-border bg-background px-6 py-8 text-center">
         <p className="text-text">
@@ -20,9 +25,32 @@ export default function ContactForm() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setSubmitted(true);
+        setStatus("sending");
+        setErrorMessage("");
+
+        try {
+          // Dikirim ke Route Handler src/app/api/contact/route.ts, yang
+          // meneruskannya sebagai email lewat SMTP (lihat .env.example).
+          const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form),
+          });
+
+          if (!res.ok) {
+            const data = await res.json().catch(() => null);
+            throw new Error(data?.error || "Something went wrong.");
+          }
+
+          setStatus("success");
+        } catch (err) {
+          setStatus("error");
+          setErrorMessage(
+            err instanceof Error ? err.message : "Something went wrong.",
+          );
+        }
       }}
       className="flex flex-col gap-4"
     >
@@ -64,8 +92,18 @@ export default function ContactForm() {
           className="resize-none border border-border bg-surface px-4 py-2.5 text-sm text-text focus:border-accent focus:outline-none"
         />
       </div>
-      <Button type="submit" variant="primary" className="mt-2 self-start">
-        Send Message
+
+      {status === "error" && (
+        <p className="text-sm text-error">{errorMessage}</p>
+      )}
+
+      <Button
+        type="submit"
+        variant="primary"
+        className="mt-2 self-start disabled:cursor-not-allowed disabled:opacity-60"
+        disabled={status === "sending"}
+      >
+        {status === "sending" ? "Sending..." : "Send Message"}
       </Button>
     </form>
   );

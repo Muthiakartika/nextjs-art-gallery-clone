@@ -2,6 +2,16 @@ import Link from "next/link";
 import Placeholder from "@/components/ui/Placeholder";
 import type { Collection } from "@/data/collections";
 
+// Kata kunci foto dummy per koleksi, supaya foto yang tampil cocok dengan
+// tema koleksinya (bukan foto acak apa pun).
+const COLLECTION_IMAGE_TAGS: Record<string, string> = {
+  "rice-terraces-landscapes": "ricefield,landscape,bali",
+  "ceremony-daily-life": "bali,temple,ceremony",
+  "still-life": "stilllife,painting",
+  abstract: "abstractart,painting",
+  "wildlife-nature": "wildlife,jungle,bird",
+};
+
 // Reusable collection tile with an image, gradient scrim, and overlaid text.
 export default function CollectionCard({
   collection,
@@ -19,6 +29,7 @@ export default function CollectionCard({
         aspect="landscape"
         seed={index + 2}
         rounded="rounded-none"
+        tags={COLLECTION_IMAGE_TAGS[collection.id] ?? "art,gallery"}
         className="transition-transform duration-500 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/25 to-transparent" />

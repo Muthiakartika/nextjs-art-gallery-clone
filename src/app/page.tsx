@@ -5,6 +5,7 @@ import BrandStory from "@/components/BrandStory";
 import Collections from "@/components/Collections";
 import Faq from "@/components/Faq";
 import Reviews from "@/components/Reviews";
+import InstagramFeed from "@/components/InstagramFeed";
 import Newsletter from "@/components/Newsletter";
 import { galleryCategories } from "@/data/gallery";
 
@@ -20,6 +21,7 @@ export default function Home() {
       <Collections />
       <Faq />
       <Reviews />
+      <InstagramFeed />
       <Newsletter />
     </Container>
   );
