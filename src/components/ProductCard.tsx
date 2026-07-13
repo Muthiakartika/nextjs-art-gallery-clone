@@ -51,7 +51,7 @@ export default function ProductCard({
         <span className="text-[11px] uppercase tracking-widest text-muted">
           {product.medium}
         </span>
-        <h3 className="text-sm font-medium text-text transition-colors group-hover:text-accent">
+        <h3 className="text-sm font-medium text-text transition-colors group-hover:text-accent sm:text-base">
           {product.title}
         </h3>
         <span className="text-sm text-muted">by {product.artist}</span>

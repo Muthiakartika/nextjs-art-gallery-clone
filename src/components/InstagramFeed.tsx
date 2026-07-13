@@ -15,7 +15,7 @@ const INSTAGRAM_PROFILE_URL = "https://www.instagram.com/";
 // grid Instagram aslinya rapat & polos (bukan foto produk berbingkai).
 export default function InstagramFeed() {
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-16 lg:py-24">
       <div className="mb-10 flex justify-center">
         <SectionHeading
           eyebrow="Follow Us"

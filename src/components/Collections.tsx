@@ -4,7 +4,7 @@ import { collections } from "@/data/collections";
 
 export default function Collections() {
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-16 lg:py-24">
       <div className="mb-12 flex justify-center">
         <SectionHeading
           eyebrow="Collections"
@@ -13,7 +13,7 @@ export default function Collections() {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {collections.map((collection, i) => (
           <CollectionCard key={collection.id} collection={collection} index={i} />
         ))}

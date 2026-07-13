@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <Container className="py-16">
+    <Container className="py-14 sm:py-16 lg:py-24">
       <SectionHeading
         eyebrow="Satori Art Gallery"
         title="The Gallery"

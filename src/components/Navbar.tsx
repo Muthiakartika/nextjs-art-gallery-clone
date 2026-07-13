@@ -24,7 +24,7 @@ export default function Navbar() {
       <AnnouncementBar />
 
       <div className="border-b border-border">
-        <div className="mx-auto grid h-20 max-w-[1320px] grid-cols-3 items-center px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto grid h-16 max-w-[1320px] grid-cols-3 items-center px-4 sm:px-6 lg:h-20 lg:px-8">
 
           {/* Logo */}
           <div className="flex items-center justify-self-start gap-3">

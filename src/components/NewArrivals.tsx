@@ -11,7 +11,7 @@ export default function NewArrivals({ category }: { category: GalleryCategory })
   const newestItems = category.items.slice(0, 3);
 
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-16 lg:py-24">
       <div className="flex justify-center">
         <SectionHeading
           eyebrow="New Arrivals"
@@ -22,7 +22,7 @@ export default function NewArrivals({ category }: { category: GalleryCategory })
 
       {/* 2/3-column grid (rather than the site's usual 4-column grid) since
           this preview always shows exactly 3 items. */}
-      <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3">
+      <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-10">
         {newestItems.map((item, i) => (
           <ProductCard
             key={item.id}

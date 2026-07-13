@@ -26,7 +26,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <Container className="py-16">
+    <Container className="py-14 sm:py-16 lg:py-24">
       <SectionHeading
         eyebrow="Our Story"
         title="About Satori Art Gallery"
@@ -42,7 +42,7 @@ export default function AboutPage() {
           tags="artstudio,painter,workshop"
           className="shadow-xl"
         />
-        <div className="flex flex-col gap-5 text-text-secondary">
+        <div className="flex flex-col gap-5 text-base text-text-secondary sm:text-lg">
           <p>
             Satori Art Gallery began as a small studio tucked between the rice
             terraces of Ubud, where a handful of painters, silversmiths, and
@@ -69,7 +69,7 @@ export default function AboutPage() {
         {values.map((v) => (
           <div key={v.title}>
             <h3 className="text-lg font-semibold text-text">{v.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+            <p className="mt-2 text-sm leading-relaxed text-text-secondary sm:text-base">
               {v.text}
             </p>
           </div>

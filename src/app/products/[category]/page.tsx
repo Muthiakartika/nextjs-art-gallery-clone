@@ -43,7 +43,7 @@ export default async function ProductCategoryPage({
   }
 
   return (
-    <Container className="py-16">
+    <Container className="py-14 sm:py-16 lg:py-24">
       <GalleryCategorySection category={found} />
     </Container>
   );

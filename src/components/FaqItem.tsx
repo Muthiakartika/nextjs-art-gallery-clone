@@ -33,7 +33,7 @@ export default function FaqItem({ faq }: { faq: Faq }) {
         }`}
       >
         <div className="overflow-hidden">
-          <p className="text-sm leading-relaxed text-text-secondary">
+          <p className="text-sm leading-relaxed text-text-secondary sm:text-base">
             {faq.answer}
           </p>
         </div>

@@ -8,7 +8,7 @@ export default function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="bg-text py-20 text-white">
+    <section className="bg-text py-14 text-white sm:py-16 lg:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <span className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">
           Free Guide

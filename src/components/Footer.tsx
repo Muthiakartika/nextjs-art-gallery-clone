@@ -42,7 +42,7 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
-      <Container className="py-16">
+      <Container className="py-12 sm:py-14 lg:py-16">
         {/* Last column ("Location") sizes to its own content instead of
             sharing an equal 1/4 share, so the ~320px map keeps its real
             width instead of being squeezed by the grid. */}

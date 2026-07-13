@@ -29,7 +29,11 @@ export default function SectionHeading({
       <h2 className="text-3xl font-semibold tracking-tight text-text sm:text-4xl">
         {title}
       </h2>
-      {description && <p className="text-text-secondary">{description}</p>}
+      {description && (
+        <p className="text-sm text-text-secondary sm:text-base lg:text-lg">
+          {description}
+        </p>
+      )}
     </div>
   );
 }

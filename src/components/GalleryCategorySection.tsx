@@ -12,7 +12,7 @@ export default function GalleryCategorySection({
   return (
     <section
       id={category.id}
-      className="scroll-mt-32 border-t border-border py-16 first:border-t-0 first:pt-0"
+      className="scroll-mt-32 border-t border-border py-14 first:border-t-0 first:pt-0 sm:py-16 lg:py-24"
     >
       <SectionHeading
         align="left"
@@ -21,7 +21,7 @@ export default function GalleryCategorySection({
         description={category.description}
       />
 
-      <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
+      <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-4">
         {category.items.map((item, i) => (
           <ProductCard
             key={item.id}

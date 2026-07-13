@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContactUsPage() {
   return (
-    <Container className="py-16">
+    <Container className="py-14 sm:py-16 lg:py-24">
       <SectionHeading
         eyebrow="Get in Touch"
         title="Contact Us"

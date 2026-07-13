@@ -15,7 +15,7 @@ export default function Reviews() {
   const next = () => setIndex((i) => (i + 1) % reviews.length);
 
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-16 lg:py-24">
       <div className="mb-12 flex justify-center">
         <SectionHeading
           eyebrow="Reviews"
