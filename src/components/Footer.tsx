@@ -15,6 +15,10 @@ const payments = [
   "QRIS",
 ];
 
+const socialLinks: FooterLink[] = [
+  { label: "Instagram", href: "https://www.instagram.com/satoriartgallery/" },
+];
+
 function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
   return (
     <div>
@@ -22,16 +26,23 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
         {title}
       </h3>
       <ul className="mt-4 space-y-2.5">
-        {links.map((link) => (
-          <li key={link.label}>
-            <Link
-              href={link.href}
-              className="text-sm text-text-secondary transition-colors hover:text-accent"
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
+        {links.map((link) => {
+          // External links (social media, etc.) open in a new tab; internal
+          // nav links use normal same-tab client-side navigation.
+          const isExternal = link.href.startsWith("http");
+          return (
+            <li key={link.label}>
+              <Link
+                href={link.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer" : undefined}
+                className="text-sm text-text-secondary transition-colors hover:text-accent"
+              >
+                {link.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -39,14 +50,14 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
 
 // Footer is rendered globally from the Root Layout, so it appears on every
 // page automatically instead of being imported into each page individually.
+// Per the latest revision: Main Navigation / Contact Information /
+// Social Media / Copyright only — no map here (the map lives on the
+// Contact Us page, see src/app/contact-us/page.tsx).
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
       <Container className="py-12 sm:py-14 lg:py-16">
-        {/* Last column ("Location") sizes to its own content instead of
-            sharing an equal 1/4 share, so the ~320px map keeps its real
-            width instead of being squeezed by the grid. */}
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_auto]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: brand mark + short description. */}
           <div>
             <div className="flex flex-col leading-none">
@@ -63,18 +74,19 @@ export default function Footer() {
 
           {/* Column 2: reuses the same NAV_ITEMS as the navbar, so the
               footer menu can never drift out of sync with the real nav. */}
-          <FooterColumn title="Main Menu" links={NAV_ITEMS} />
+          <FooterColumn title="Main Navigation" links={NAV_ITEMS} />
 
-          {/* Column 3: studio contact details. */}
+          {/* Column 3: contact details (no Instagram here — see the
+              separate Social Media column). */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-text">
-              Contact Info
+              Contact Information
             </h3>
             <address className="mt-4 space-y-2 text-sm not-italic leading-relaxed text-text-secondary">
               <p>
                  Jl. Kayu Aya (Oberoi), Seminyak,
                 <br />
-                Kerobokan Kelod, Kut Utara,, 
+                Kerobokan Kelod, Kut Utara,,
                 <br />
                 Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361
               </p>
@@ -91,33 +103,11 @@ export default function Footer() {
                   hello@satoriartgallery.com
                 </a>
               </p>
-              <p>
-                <a
-                  href="https://www.instagram.com/satoriartgallery/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-accent"
-                >
-                  Instagram
-                </a>
-              </p>
             </address>
           </div>
 
-          {/* Column 4: small map so visitors can find the studio at a glance. */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-text">
-              Location
-            </h3>
-            <div className="mt-4 h-[220px] w-[320px] max-w-full overflow-hidden border border-border">
-              <iframe
-                title="Satori Art Gallery location — Seminyak, Bali"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0817965833585!2d115.16334820000002!3d-8.6837716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247178ea84809%3A0x96774c2eed17cb61!2sSatori!5e0!3m2!1sen!2sid!4v1783916501340!5m2!1sen!2sid"
-                className="h-full w-full"
-                loading="lazy"
-              />
-            </div>
-          </div>
+          {/* Column 4: social media. */}
+          <FooterColumn title="Social Media" links={socialLinks} />
         </div>
 
         <div className="mt-12 flex flex-col gap-6 border-t border-border pt-8 md:flex-row md:items-center md:justify-between">

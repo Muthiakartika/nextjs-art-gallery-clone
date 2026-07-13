@@ -1,12 +1,10 @@
 import Container from "@/components/ui/Container";
 import Hero from "@/components/Hero";
 import NewArrivals from "@/components/NewArrivals";
-import BrandStory from "@/components/BrandStory";
 import Collections from "@/components/Collections";
 import Faq from "@/components/Faq";
 import Reviews from "@/components/Reviews";
 import InstagramFeed from "@/components/InstagramFeed";
-import Newsletter from "@/components/Newsletter";
 import { galleryCategories } from "@/data/gallery";
 
 export default function Home() {
@@ -17,12 +15,11 @@ export default function Home() {
       {galleryCategories.map((category) => (
         <NewArrivals key={category.id} category={category} />
       ))}
-      <BrandStory />
       <Collections />
       <Faq />
-      <Reviews />
+      {/* Instagram feed comes before Reviews (client revision). */}
       <InstagramFeed />
-      <Newsletter />
+      <Reviews />
     </Container>
   );
 }

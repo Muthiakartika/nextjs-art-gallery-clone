@@ -49,13 +49,13 @@ import ProductCard from "@/components/ProductCard";
 import type { GalleryCategory } from "@/data/gallery";
 
 // Homepage category preview.
-// Menampilkan 3 produk terbaru dari setiap kategori di homepage.
+// Menampilkan 6 produk terbaru dari setiap kategori di homepage.
 export default function NewArrivals({
   category,
 }: {
   category: GalleryCategory;
 }) {
-  const newestItems = category.items.slice(0, 3);
+  const newestItems = category.items.slice(0, 6);
 
   return (
     <section className="py-12 sm:py-16 lg:py-24">

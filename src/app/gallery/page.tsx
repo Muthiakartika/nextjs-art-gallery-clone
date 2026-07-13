@@ -36,7 +36,13 @@ export default function GalleryPage() {
 
       <div className="mt-4">
         {galleryCategories.map((cat) => (
-          <GalleryCategorySection key={cat.id} category={cat} />
+          <section
+            key={cat.id}
+            id={cat.id}
+            className="scroll-mt-32"
+          >
+            <GalleryCategorySection category={cat} />
+          </section>
         ))}
       </div>
     </Container>

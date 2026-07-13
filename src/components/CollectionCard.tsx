@@ -10,6 +10,11 @@ const COLLECTION_IMAGE_TAGS: Record<string, string> = {
   "still-life": "stilllife,painting",
   abstract: "abstractart,painting",
   "wildlife-nature": "wildlife,jungle,bird",
+  // Product-category ids (this card is reused on the Gallery page for the
+  // three "Our Product" categories, not just the homepage's theme collections).
+  paintings: "painting,canvas,art",
+  "silver-jewelry": "jewelry,silver,ring",
+  handcraft: "woodcarving,craft,handmade",
 };
 
 // Reusable collection tile with an image, gradient scrim, and overlaid text.

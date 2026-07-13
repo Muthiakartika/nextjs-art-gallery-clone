@@ -10,16 +10,23 @@ export default function DesktopNav() {
       <ul className="flex items-center gap-8">
         {NAV_ITEMS.map((item) => (
           <li key={item.label} className="group relative">
-            <Link
-              href={item.href}
-              className="inline-flex items-center gap-1 text-[15px] font-medium text-text transition-colors hover:text-accent"
-            >
-              {item.label}
 
-              {item.columns && (
+            {item.columns ? (
+              <button
+                type="button"
+                className="inline-flex items-center gap-1 text-[15px] font-medium text-text transition-colors hover:text-accent"
+              >
+                {item.label}
                 <ChevronDownIcon className="h-3.5 w-3.5 text-muted transition-transform duration-200 group-hover:rotate-180" />
-              )}
-            </Link>
+              </button>
+            ) : (
+              <Link
+                href={item.href}
+                className="inline-flex items-center gap-1 text-[15px] font-medium text-text transition-colors hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            )}
 
             {item.columns && <MegaPanel columns={item.columns} />}
           </li>
