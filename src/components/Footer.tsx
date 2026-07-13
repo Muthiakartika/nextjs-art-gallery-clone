@@ -72,9 +72,11 @@ export default function Footer() {
             </h3>
             <address className="mt-4 space-y-2 text-sm not-italic leading-relaxed text-text-secondary">
               <p>
-                Jl. Raya Sanggingan No. 21,
+                 Jl. Kayu Aya (Oberoi), Seminyak,
                 <br />
-                Ubud, Gianyar, Bali 80571
+                Kerobokan Kelod, Kut Utara,, 
+                <br />
+                Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361
               </p>
               <p>
                 <a href="tel:+62361123456" className="transition-colors hover:text-accent">
@@ -91,7 +93,7 @@ export default function Footer() {
               </p>
               <p>
                 <a
-                  href="https://www.instagram.com/"
+                  href="https://www.instagram.com/satoriartgallery/"
                   target="_blank"
                   rel="noreferrer"
                   className="transition-colors hover:text-accent"
@@ -109,8 +111,8 @@ export default function Footer() {
             </h3>
             <div className="mt-4 h-[220px] w-[320px] max-w-full overflow-hidden border border-border">
               <iframe
-                title="Satori Art Gallery location — Ubud, Bali"
-                src="https://maps.google.com/maps?q=Ubud%2C%20Bali%2C%20Indonesia&z=13&output=embed"
+                title="Satori Art Gallery location — Seminyak, Bali"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0817965833585!2d115.16334820000002!3d-8.6837716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247178ea84809%3A0x96774c2eed17cb61!2sSatori!5e0!3m2!1sen!2sid!4v1783916501340!5m2!1sen!2sid"
                 className="h-full w-full"
                 loading="lazy"
               />
@@ -122,7 +124,7 @@ export default function Footer() {
           <p className="text-xs text-muted">
             © {new Date().getFullYear()}, Satori Art Gallery
           </p>
-          <div className="flex flex-wrap gap-2">
+          {/* <div className="flex flex-wrap gap-2">
             {payments.map((p) => (
               <span
                 key={p}
@@ -131,7 +133,7 @@ export default function Footer() {
                 {p}
               </span>
             ))}
-          </div>
+          </div> */}
         </div>
       </Container>
     </footer>

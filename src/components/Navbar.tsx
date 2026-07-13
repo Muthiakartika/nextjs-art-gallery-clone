@@ -48,7 +48,7 @@ export default function Navbar() {
           {/* Instagram */}
           <div className="flex justify-end">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/satoriartgallery/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-text-secondary hover:text-accent"
