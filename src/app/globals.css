@@ -19,6 +19,21 @@
   --color-link-hover: #474e3d;
   --color-success: #4e7b58;
   --color-error: #a0554a;
+
+  /* Type scale rebased to a 19px body size (each step = the Tailwind default
+     × 1.1875), so every text-* utility reads from a 19px base. Spacing
+     (--spacing) is intentionally left untouched. Change these here to
+     rescale all text in one place. */
+  --text-xs: 0.891rem;
+  --text-sm: 1.039rem;
+  --text-base: 1.188rem; /* 19px */
+  --text-lg: 1.336rem;
+  --text-xl: 1.484rem;
+  --text-2xl: 1.781rem;
+  --text-3xl: 2.227rem;
+  --text-4xl: 2.672rem;
+  --text-5xl: 3.563rem;
+  --text-6xl: 4.453rem;
 }
 
 @theme inline {
@@ -30,6 +45,53 @@ body {
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  font-size: var(--text-base); /* 19px base — see the type scale in @theme */
+}
+
+/* Global heading scale — the single place to control h1–h6 sizes. Fluid via
+   clamp() so they scale smoothly from mobile to desktop; change a value here
+   and every matching heading updates. Small semantic headings used as labels
+   (e.g. footer/product/card titles) override these with their own text-*
+   utility classes, so only the display headings pick up this scale. */
+:root {
+  --h1: clamp(2.25rem, 1.5rem + 3.5vw, 3.75rem);
+  --h2: clamp(1.875rem, 1.4rem + 2.2vw, 2.75rem);
+  --h3: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
+  --h4: 1.5rem;
+  --h5: 1.25rem;
+  --h6: 1.125rem;
+}
+
+@layer base {
+  h1 {
+    font-size: var(--h1);
+  }
+  h2 {
+    font-size: var(--h2);
+  }
+  h3 {
+    font-size: var(--h3);
+  }
+  h4 {
+    font-size: var(--h4);
+  }
+  h5 {
+    font-size: var(--h5);
+  }
+  h6 {
+    font-size: var(--h6);
+  }
+}
+
+/* Standard vertical rhythm for every content section, defined ONCE here so
+   the spacing between sections stays consistent site-wide and never has to
+   be repeated (or drift) per component. 50px on mobile/tablet, 150px on
+   desktop. Use it on any <section> or the page-level <Container>. */
+@utility py-section {
+  padding-block: 50px; /* mobile + tablet */
+  @variant lg {
+    padding-block: 150px; /* desktop */
+  }
 }
 
 /* Slideshow latar belakang Hero (lihat Hero.tsx): beberapa foto full-bleed

@@ -12,7 +12,7 @@ export const ANNOUNCEMENT =
 // doesn't match the real pages it links to.
 const productLinks: SubLink[] = galleryCategories.map((category) => ({
   label: category.title,
-  href: `/gallery#${category.id}`,
+  href: `/products/${category.id}`,
 }));
 
 export const NAV_ITEMS: NavItem[] = [

@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Container from "@/components/ui/Container";
-import GalleryCategorySection from "@/components/GalleryCategorySection";
+import ProductCategoryPage from "@/components/ProductCategoryPage";
 import { galleryCategories } from "@/data/gallery";
 
 // Pre-render the three known category pages (paintings, silver-jewelry,
@@ -27,10 +26,10 @@ export async function generateMetadata({
   };
 }
 
-// One dynamic route serves all three product categories instead of three
-// near-identical page files — the only thing that changes per URL is which
-// category object we look up and hand to GalleryCategorySection.
-export default async function ProductCategoryPage({
+// One dynamic route serves all three product categories. It only resolves the
+// category from the URL and hands it to the shared ProductCategoryPage
+// template, so all three pages share the exact same layout.
+export default async function ProductCategoryRoute({
   params,
 }: {
   params: Promise<{ category: string }>;
@@ -42,9 +41,5 @@ export default async function ProductCategoryPage({
     notFound();
   }
 
-  return (
-    <Container className="py-14 sm:py-16 lg:py-24">
-      <GalleryCategorySection category={found} />
-    </Container>
-  );
+  return <ProductCategoryPage category={found} />;
 }

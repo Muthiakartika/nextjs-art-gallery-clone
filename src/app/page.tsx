@@ -11,10 +11,16 @@ export default function Home() {
   return (
     <Container>
       <Hero />
-      {/* One "Newest {Category}" preview section per product category. */}
-      {galleryCategories.map((category) => (
+      {/* Paintings-only for now. To show every category again, restore the
+          commented map below and remove this filtered one. */}
+      {galleryCategories
+        .filter((category) => category.id === "paintings")
+        .map((category) => (
+          <NewArrivals key={category.id} category={category} />
+        ))}
+      {/* {galleryCategories.map((category) => (
         <NewArrivals key={category.id} category={category} />
-      ))}
+      ))} */}
       <Collections />
       <Faq />
       {/* Instagram feed comes before Reviews (client revision). */}

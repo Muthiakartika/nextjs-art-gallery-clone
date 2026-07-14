@@ -8,7 +8,7 @@ import { galleryCategories } from "@/data/gallery";
 // to show 5 painting sub-themes from data/collections.ts instead).
 export default function Collections() {
   return (
-    <section className="py-14 sm:py-16 lg:py-24">
+    <section className="py-section">
       <div className="mb-12 flex justify-center">
         <SectionHeading
           eyebrow="Collections"

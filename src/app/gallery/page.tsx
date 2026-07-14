@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
   return (
-    <Container className="py-14 sm:py-16 lg:py-24">
+    <Container className="py-section">
       <SectionHeading
         eyebrow="Satori Art Gallery"
         title="The Gallery"
@@ -23,7 +23,19 @@ export default function GalleryPage() {
         aria-label="Gallery categories"
         className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2"
       >
-        {galleryCategories.map((cat) => (
+        {/* Paintings-only for now — restore the commented map below to list all. */}
+        {galleryCategories
+          .filter((cat) => cat.id === "paintings")
+          .map((cat) => (
+            <a
+              key={cat.id}
+              href={`#${cat.id}`}
+              className="text-sm font-medium text-text-secondary underline-offset-4 hover:text-accent hover:underline"
+            >
+              {cat.title}
+            </a>
+          ))}
+        {/* {galleryCategories.map((cat) => (
           <a
             key={cat.id}
             href={`#${cat.id}`}
@@ -31,19 +43,24 @@ export default function GalleryPage() {
           >
             {cat.title}
           </a>
-        ))}
+        ))} */}
       </nav>
 
+      {/* GalleryCategorySection already renders its own <section> with the
+          id + scroll-mt-32 anchor and the border divider between categories,
+          so we map it directly here. (A previous extra <section> wrapper
+          caused duplicate ids and made every category a :first-child, which
+          removed the divider lines + spacing between them.) */}
       <div className="mt-4">
-        {galleryCategories.map((cat) => (
-          <section
-            key={cat.id}
-            id={cat.id}
-            className="scroll-mt-32"
-          >
-            <GalleryCategorySection category={cat} />
-          </section>
-        ))}
+        {/* Paintings-only for now — restore the commented map below to show all. */}
+        {galleryCategories
+          .filter((cat) => cat.id === "paintings")
+          .map((cat) => (
+            <GalleryCategorySection key={cat.id} category={cat} />
+          ))}
+        {/* {galleryCategories.map((cat) => (
+          <GalleryCategorySection key={cat.id} category={cat} />
+        ))} */}
       </div>
     </Container>
   );

@@ -12,7 +12,7 @@ export default function GalleryCategorySection({
   return (
     <section
       id={category.id}
-      className="scroll-mt-32 border-t border-border py-14 first:border-t-0 first:pt-0 sm:py-16 lg:py-24"
+      className="scroll-mt-32 border-t border-border py-section first:border-t-0 first:pt-0"
     >
       <SectionHeading
         align="left"

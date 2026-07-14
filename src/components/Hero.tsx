@@ -47,6 +47,7 @@ export default function Hero() {
               alt=""
               fill
               priority={i === 0}
+              loading={i === 0 ? "eager" : "lazy"}
               sizes="100vw"
               className="hero-slide-img object-cover"
               style={{
@@ -65,7 +66,7 @@ export default function Hero() {
           proporsional: kecil di mobile, sedang di tablet (sm/md), besar di
           desktop (lg). */}
       <div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 sm:py-16 md:py-20">
-        <h1 className="text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+        <h1 className="font-semibold leading-tight text-white">
           Original Paintings from Our Bali Art Gallery
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:mt-5 sm:text-lg md:mt-6 md:text-xl">

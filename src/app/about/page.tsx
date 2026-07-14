@@ -26,7 +26,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <Container className="py-14 sm:py-16 lg:py-24">
+    <Container className="py-section">
       <SectionHeading
         eyebrow="Our Story"
         title="About Satori Art Gallery"

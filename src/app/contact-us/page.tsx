@@ -11,48 +11,63 @@ export const metadata: Metadata = {
 
 export default function ContactUsPage() {
   return (
-    <Container className="py-14 sm:py-16 lg:py-24">
+    <Container className="py-section">
       <SectionHeading
         eyebrow="Get in Touch"
         title="Contact Us"
         description="Questions about a piece, a commission, or a visit to the studio? We'd love to hear from you."
       />
 
-      <div className="mt-12 grid gap-12 lg:grid-cols-2">
+      {/* Desktop */}
+      <div className="mt-14 hidden lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+        {/* LEFT */}
         <ContactForm />
 
-        <div className="flex flex-col gap-6">
+        {/* RIGHT */}
+        <div className="space-y-8">
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-text">
               Studio
             </h3>
-            <address className="mt-3 space-y-1 text-sm not-italic leading-relaxed text-text-secondary">
+
+            <address className="mt-3 space-y-1 text-sm leading-relaxed text-text-secondary not-italic">
               <p>Jl. Kayu Aya (Oberoi), Seminyak,</p>
-              <p>Kerobokan Kelod, Kut Utara</p>
+              <p>Kerobokan Kelod, Kuta Utara</p>
               <p>Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361</p>
             </address>
           </div>
+
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-text">
               Contact
             </h3>
-            <div className="mt-3 space-y-1 text-sm text-text-secondary">
+
+            <div className="mt-3 space-y-2 text-sm text-text-secondary">
               <p>
-                <a href="mailto:hello@satoriartgallery.com" className="hover:text-accent">
+                <a
+                  href="mailto:hello@satoriartgallery.com"
+                  className="hover:text-accent"
+                >
                   hello@satoriartgallery.com
                 </a>
               </p>
+
               <p>
-                <a href="tel:+62361123456" className="hover:text-accent">
+                <a
+                  href="tel:+62361123456"
+                  className="hover:text-accent"
+                >
                   +62 361 123 456
                 </a>
               </p>
             </div>
           </div>
+
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-text">
               Hours
             </h3>
+
             <p className="mt-3 text-sm text-text-secondary">
               Daily, 9:00 AM – 6:00 PM (Bali time)
             </p>
@@ -60,10 +75,59 @@ export default function ContactUsPage() {
 
           <div className="overflow-hidden border border-border">
             <iframe
-              title="Satori Art Gallery location — Ubud, Bali"
+              title="Satori Art Gallery location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0817965833585!2d115.16334820000002!3d-8.6837716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247178ea84809%3A0x96774c2eed17cb61!2sSatori!5e0!3m2!1sen!2sid!4v1783916501340!5m2!1sen!2sid"
-              className="h-64 w-full"
               loading="lazy"
+              className="h-[330px] w-full"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile */}
+      <div className="mt-14 space-y-10 lg:hidden">
+        <ContactForm />
+
+        <div className="space-y-8">
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-text">
+              Studio
+            </h3>
+
+            <address className="mt-3 space-y-1 text-sm leading-relaxed text-text-secondary not-italic">
+              <p>Jl. Kayu Aya (Oberoi), Seminyak,</p>
+              <p>Kerobokan Kelod, Kuta Utara</p>
+              <p>Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361</p>
+            </address>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-text">
+              Contact
+            </h3>
+
+            <div className="mt-3 space-y-2 text-sm text-text-secondary">
+              <p>hello@satoriartgallery.com</p>
+              <p>+62 361 123 456</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-text">
+              Hours
+            </h3>
+
+            <p className="mt-3 text-sm text-text-secondary">
+              Daily, 9:00 AM – 6:00 PM (Bali time)
+            </p>
+          </div>
+
+          <div className="overflow-hidden border border-border">
+            <iframe
+              title="Satori Art Gallery location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0817965833585!2d115.16334820000002!3d-8.6837716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247178ea84809%3A0x96774c2eed17cb61!2sSatori!5e0!3m2!1sen!2sid!4v1783916501340!5m2!1sen!2sid"
+              loading="lazy"
+              className="h-72 w-full"
             />
           </div>
         </div>
