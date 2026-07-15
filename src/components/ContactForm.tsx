@@ -114,7 +114,7 @@ export default function ContactForm() {
 
         <textarea
           id="message"
-          rows={4}
+          rows={3.5}
           required
           value={form.message}
           onChange={(e) =>

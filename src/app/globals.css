@@ -90,7 +90,7 @@ body {
 @utility py-section {
   padding-block: 50px; /* mobile + tablet */
   @variant lg {
-    padding-block: 150px; /* desktop */
+    padding-block: 100px; /* desktop */
   }
 }
 

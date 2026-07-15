@@ -58,7 +58,7 @@ export default function NewArrivals({
   const newestItems = category.items.slice(0, 6);
 
   return (
-    <section className="py-section">
+    <section className="pt-[100px] pb-[0px] py-section">
       {/* Section Heading */}
       <div className="flex justify-center">
         <SectionHeading

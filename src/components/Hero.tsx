@@ -1,16 +1,26 @@
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import { dummyImageUrl } from "@/lib/dummyImage";
 
-// Seed foto dummy yang dipakai bergantian sebagai latar Hero (bukan foto
-// asli — lihat dummyImageUrl di src/lib/dummyImage.ts). Urutan array ini
-// juga menentukan urutan tampil di slideshow.
-const HERO_PHOTO_SEEDS = [10, 11, 12, 13];
+/**
+ * DAFTAR GAMBAR HERO UNTUK SLIDESHOW
+ * ==================================
+ * Setiap item berisi:
+ * - src: Path menuju gambar di folder /public/img/hero/
+ * - alt: Teks alternatif untuk aksesibilitas (jika gambar tidak bisa dimuat)
+ *
+ * Gambar akan ditampilkan bergantian dengan animasi crossfade dan zoom
+ * yang smooth tanpa perlu JavaScript (menggunakan CSS animation).
+ */
+const HERO_IMAGES = [
+  { src: "/img/hero/hero painting 1.jpg", alt: "Paintings Gallery" },
+  { src: "/img/hero/hero silver 1.jpg", alt: "Silver Jewelry" },
+  { src: "/img/hero/hero craft  1.jpg", alt: "Handcraft" },
+];
 
-// Lama satu putaran penuh slideshow (detik). Dibagi rata ke tiap foto lewat
-// animation-delay di bawah, supaya kemunculannya bergantian rapi, bukan
-// tumpuk. Keyframe animasinya (heroFade, heroZoom) ada di globals.css.
-const CYCLE_SECONDS = HERO_PHOTO_SEEDS.length * 6;
+// Durasi satu siklus penuh slideshow (detik)
+// Rumus: jumlah gambar × 6 detik per gambar
+// Contoh: 3 gambar × 6 detik = 18 detik per siklus
+const CYCLE_SECONDS = HERO_IMAGES.length * 6;
 
 // Full-width, full-height gallery-interior banner. Latar belakangnya adalah
 // slideshow foto dummy yang mengisi SELURUH lebar & tinggi section (bukan
@@ -20,7 +30,7 @@ export default function Hero() {
   return (
     <section
       className="relative isolate flex min-h-[420px] items-center justify-center overflow-hidden
-        sm:min-h-[520px] md:min-h-[600px] lg:min-h-[680px] mt-[100px]"
+        sm:min-h-[520px] md:min-h-[600px] lg:min-h-[680px] mt-[100px] border-[1px] border-white"
     >
       {/* Latar belakang: slideshow foto dummy, tiap foto absolute+inset-0
           sehingga otomatis selebar dan setinggi section-nya di semua
@@ -33,18 +43,18 @@ export default function Hero() {
           }}
         />
 
-        {HERO_PHOTO_SEEDS.map((seed, i) => (
+        {HERO_IMAGES.map((image, i) => (
           <div
-            key={seed}
+            key={i}
             className="hero-slide absolute inset-0 overflow-hidden"
             style={{
               animationDuration: `${CYCLE_SECONDS}s`,
-              animationDelay: `${i * (CYCLE_SECONDS / HERO_PHOTO_SEEDS.length)}s`,
+              animationDelay: `${i * (CYCLE_SECONDS / HERO_IMAGES.length)}s`,
             }}
           >
             <Image
-              src={dummyImageUrl(seed, 1600, 900, "artgallery,painting,museum")}
-              alt=""
+              src={image.src}
+              alt={image.alt}
               fill
               priority={i === 0}
               loading={i === 0 ? "eager" : "lazy"}
@@ -52,7 +62,7 @@ export default function Hero() {
               className="hero-slide-img object-cover"
               style={{
                 animationDuration: `${CYCLE_SECONDS}s`,
-                animationDelay: `${i * (CYCLE_SECONDS / HERO_PHOTO_SEEDS.length)}s`,
+                animationDelay: `${i * (CYCLE_SECONDS / HERO_IMAGES.length)}s`,
               }}
             />
           </div>

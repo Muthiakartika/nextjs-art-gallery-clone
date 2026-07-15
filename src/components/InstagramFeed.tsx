@@ -6,7 +6,7 @@ import BeholdFeed from "@/components/BeholdFeed";
 
 export default function InstagramFeed() {
   return (
-    <section className="py-section">
+    <section className="pt-[100px] pb-[50px] py-section">
       <div className="mb-10 flex justify-center">
         <SectionHeading
           eyebrow="Follow Us"

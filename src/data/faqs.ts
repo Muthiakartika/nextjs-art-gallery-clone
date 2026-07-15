@@ -5,23 +5,28 @@ export type Faq = {
 
 export const faqs: Faq[] = [
   {
-    question: "Are all the pieces original and handmade?",
+    question: "Are all of your artworks and products authentic?",
     answer:
-      "Yes — every painting, silver piece, and handcrafted object we sell is one-of-a-kind, made by hand in our Ubud studio and by artisans we work with across Bali. We never sell mass-produced reproductions.",
+      "Yes. Every painting, silver jewelry piece, and handcrafted object at Satori Art Gallery is carefully selected or created by skilled Balinese artists and artisans. Each item is original and crafted with attention to detail, ensuring authenticity and exceptional quality.",
   },
   {
-    question: "Can I visit the gallery in person?",
+    question: "Can I visit Satori Art Gallery in person?",
     answer:
-      "Of course. Our gallery and studio are open daily in Ubud, Bali. Stop by to see the paintings, silverwork, and handcraft up close, or get in touch to arrange a visit.",
+      "Absolutely. We welcome visitors to our gallery in Seminyak, Bali. Whether you're looking for original artwork, handcrafted décor, or silver jewelry, you're invited to explore our collection and experience each piece up close.",
   },
   {
     question: "Do you ship internationally?",
     answer:
-      "Yes, we carefully pack and ship worldwide. Every piece is insured and tracked from Bali to your door, wherever you are.",
+      "Yes. We offer secure worldwide shipping for our artworks and handcrafted products. Every order is professionally packed to help ensure it arrives safely, no matter where you are located.",
   },
   {
-    question: "How do I know which piece is right for me?",
+    question: "Do you accept custom commissions?",
     answer:
-      "We're happy to help. Tell us about your space and what draws you to a piece — whether a painting, a silver design, or a handcrafted object — and we'll offer personalized recommendations so you can choose with confidence.",
+      "Yes. Selected artists collaborate with us on commissioned paintings and custom handcrafted pieces. Contact us with your ideas, preferred size, style, or requirements, and we'll discuss the possibilities with you.",
+  },
+  {
+    question: "How do I know which artwork is right for my space?",
+    answer:
+      "Our team is happy to help. Share a photo of your room or describe your interior style, and we'll recommend paintings or handcrafted pieces that complement your space and personal taste.",
   },
 ];
