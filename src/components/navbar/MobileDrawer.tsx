@@ -26,22 +26,22 @@ export default function MobileDrawer({
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-border px-5 py-4">
+        <div className="flex items-center justify-between border-b border-border px-4 sm:px-5 py-4">
           <Brand />
-          <button type="button" onClick={onClose} className="p-1 text-text-secondary hover:text-accent" aria-label="Close menu">
+          <button type="button" onClick={onClose} className="p-2 text-text-secondary hover:text-accent" aria-label="Close menu">
             <CloseIcon className="h-6 w-6" />
           </button>
         </div>
 
-        <nav className="flex-1 overflow-y-auto px-3 py-4" aria-label="Mobile">
-          <ul className="space-y-1">
+        <nav className="flex-1 overflow-y-auto px-3 py-5" aria-label="Mobile">
+          <ul className="space-y-2">
             {NAV_ITEMS.map((item) => (
               <MobileNavItem key={item.label} item={item} onNavigate={onClose} />
             ))}
           </ul>
         </nav>
 
-        <div className="border-t border-border px-5 py-4">
+        <div className="border-t border-border px-4 sm:px-5 py-4">
           <a
             href="https://www.instagram.com/"
             target="_blank"

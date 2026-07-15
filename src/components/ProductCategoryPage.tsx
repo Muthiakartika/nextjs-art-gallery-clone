@@ -25,7 +25,7 @@ export default function ProductCategoryPage({
       {/* Standard product grid used across the site (2 columns on mobile,
           4 on desktop), reusing ProductCard. Renders every product in the
           category. */}
-      <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-4">
+      <div className="mt-12 grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-x-4 sm:gap-y-8 lg:grid-cols-4 lg:gap-x-6 lg:gap-y-10">
         {category.items.map((item, i) => (
           <ProductCard
             key={item.id}

@@ -56,8 +56,8 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
-      <Container className="py-12 sm:py-14 lg:py-16">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <Container className="py-10 sm:py-12 lg:py-16">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-4 lg:gap-12">
           {/* Column 1: brand mark + short description. */}
           <div>
             <div className="flex flex-col leading-none">
@@ -110,7 +110,7 @@ export default function Footer() {
           <FooterColumn title="Social Media" links={socialLinks} />
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-border pt-8 md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-5 border-t border-border pt-8 sm:mt-12 sm:gap-6 md:flex-row md:items-center md:justify-between">
           <p className="text-xs text-muted">
             © {new Date().getFullYear()}, Satori Art Gallery
           </p>

@@ -18,8 +18,8 @@ export default function ClosingCTA() {
       <Container>
         {/* CTA Content - Flex row untuk desktop, col untuk mobile */}
         <div className="flex flex-col items-start justify-between gap-8 sm:gap-10 lg:flex-row lg:items-center">
-          {/* LEFT: Text Content - Margin kiri untuk spacing */}
-          <div className="flex-1 pl-0 sm:pl-6 lg:pl-8">
+          {/* LEFT: Text Content */}
+          <div className="flex-1">
             <span className="text-xs uppercase tracking-widest text-white/70">
               Get In Touch
             </span>
@@ -40,8 +40,8 @@ export default function ClosingCTA() {
             </p>
           </div>
 
-          {/* RIGHT: Button - Margin kanan untuk spacing */}
-          <div className="flex-shrink-0 pr-0 sm:pr-6 lg:pr-8">
+          {/* RIGHT: Button */}
+          <div className="flex-shrink-0">
             <Button
               href="/contact-us"
               className="whitespace-nowrap bg-white px-6 py-2.5 text-sm text-link hover:bg-white/90 sm:px-8 sm:py-3 sm:text-base"

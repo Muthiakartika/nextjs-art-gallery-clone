@@ -30,7 +30,7 @@ export default function Hero() {
   return (
     <section
       className="relative isolate flex min-h-[420px] items-center justify-center overflow-hidden
-        sm:min-h-[520px] md:min-h-[600px] lg:min-h-[680px] mt-[100px] border-[1px] border-white"
+        sm:min-h-[520px] md:min-h-[600px] lg:min-h-[680px] mt-12 sm:mt-16 md:mt-20 lg:mt-[100px] border-[1px] border-white"
     >
       {/* Latar belakang: slideshow foto dummy, tiap foto absolute+inset-0
           sehingga otomatis selebar dan setinggi section-nya di semua

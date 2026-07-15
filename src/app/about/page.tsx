@@ -33,7 +33,7 @@ export default function AboutPage() {
         description="A home for painters, silversmiths, and artisans in the heart of Seminyak, Bali."
       />
 
-      <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="mt-12 grid gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:items-center lg:gap-14">
         {/*
           GAMBAR STUDIO
           ============

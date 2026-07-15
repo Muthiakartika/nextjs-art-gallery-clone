@@ -78,7 +78,7 @@ export default function ContactUsPage() {
               title="Satori Art Gallery location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0817965833585!2d115.16334820000002!3d-8.6837716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247178ea84809%3A0x96774c2eed17cb61!2sSatori!5e0!3m2!1sen!2sid!4v1783916501340!5m2!1sen!2sid"
               loading="lazy"
-              className="h-[330px] w-full"
+              className="h-64 w-full lg:h-80"
             />
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function ContactUsPage() {
               title="Satori Art Gallery location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0817965833585!2d115.16334820000002!3d-8.6837716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247178ea84809%3A0x96774c2eed17cb61!2sSatori!5e0!3m2!1sen!2sid!4v1783916501340!5m2!1sen!2sid"
               loading="lazy"
-              className="h-72 w-full"
+              className="h-64 w-full lg:h-80"
             />
           </div>
         </div>
