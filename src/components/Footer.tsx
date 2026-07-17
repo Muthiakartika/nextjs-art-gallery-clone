@@ -67,8 +67,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-text-secondary">
-              Original paintings, silver jewelry, and handcraft from our Ubud
-              studio, carefully shipped worldwide.
+            Original paintings, sterling silver jewelry, and handmade Balinese crafts from our gallery in Seminyak, Bali.
+
             </p>
           </div>
 

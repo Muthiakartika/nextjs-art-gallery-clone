@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 const values = [
   {
     title: "Craftsmanship",
-    text: "Every piece is made by hand, with no shortcuts and no mass production.",
+    text: "Every painting, piece of jewelry, and handcrafted object is created with skill, patience, and genuine respect for traditional craftsmanship.",
   },
   {
     title: "Community",
-    text: "We work directly with painters, silversmiths, and artisans across Bali, paying fair prices for their craft.",
+    text: "We work closely with artists and artisans across Bali, helping introduce their work to collectors and visitors through our gallery.",
   },
   {
     title: "Sustainability",
-    text: "Locally sourced wood, silver, and textiles, worked in small batches rather than assembly lines.",
+    text: "Many of our handcrafted collections are produced in small batches using traditional techniques that value quality over quantity.",
   },
 ];
 
@@ -54,27 +54,16 @@ export default function AboutPage() {
         </div>
         <div className="flex flex-col gap-5 text-base text-text-secondary sm:text-lg">
         <p>
-          Satori Art Gallery is nestled in the heart of Seminyak, Bali, on Jalan
-          Kayu Aya (Oberoi), where painters, silversmiths, and artisans come
-          together to celebrate the island&apos;s rich artistic heritage. More than
-          just a gallery, Satori is a place where handcrafted works are carefully
-          curated, allowing every piece to tell its own story.
+        Satori Art Gallery is located on Jalan Kayu Aya (Oberoi) in Seminyak, Bali. Our collection includes original paintings by local Balinese and international artists, handcrafted sterling silver jewelry, and traditional Balinese crafts created by skilled local artisans.
         </p>
 
         <p>
-          The name <em>Satori</em> — a moment of sudden, quiet understanding —
-          reflects how we hope you feel when discovering a work that truly speaks
-          to you. We value authenticity over mass production. Every painting,
-          every piece of silver jewelry, and every handcrafted object is created
-          with patience, skill, and respect for traditional craftsmanship.
+        We believe every handmade piece carries the character of its maker. Instead of mass producing our collections, we focus on works that reflect creativity, craftsmanship, and the artistic traditions that continue to thrive across Bali.
         </p>
 
         <p>
-          Today, Satori Art Gallery proudly showcases the work of talented
-          Balinese artists and craftspeople, welcoming visitors from around the
-          world to experience original creations inspired by the culture, beauty,
-          and spirit of Bali. From our gallery in Seminyak, each piece continues
-          its journey from the hands of its maker to collectors across the globe.
+        Today, Satori Art Gallery is home to a diverse collection of original paintings, handcrafted silver jewelry, and Balinese crafts. We work with local artisans and artists from Bali and beyond to present original handmade creations for visitors and collectors.
+
         </p>
         </div>
       </div>

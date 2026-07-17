@@ -4,53 +4,64 @@ import Button from "@/components/ui/Button";
 /**
  * CLOSING CALL-TO-ACTION
  * ======================
- * Small, compact CTA section sebelum footer dengan background color.
+ * CTA section sebelum footer untuk mengarahkan visitor menuju Contact Us.
  *
- * Tujuan:
- * - Mengarahkan visitor ke halaman Contact Us dengan subtle approach
- * - Sejajar dengan width section lainnya via Container
- * - Background: sage green (color-link) untuk luxury aesthetic
- * - Text color: white/light untuk kontras dengan dark background
+ * Design:
+ * - Dark luxury card
+ * - Tidak full width agar lebih premium
+ * - Layout 2 kolom di desktop
+ * - Stack di mobile
+ * - Konsisten dengan identitas visual Satori Art Gallery
  */
 export default function ClosingCTA() {
   return (
-    <section className="bg-ink-soft py-16 sm:py-20">
-      <Container>
-        {/* CTA Content - Flex row untuk desktop, col untuk mobile */}
-        <div className="flex flex-col items-start justify-between gap-8 sm:gap-10 lg:flex-row lg:items-center">
-          {/* LEFT: Text Content */}
-          <div className="flex-1">
-            <span className="text-xs uppercase tracking-widest text-white/70">
-              Get In Touch
-            </span>
+    <section className="mb-[40px] sm:mb-[60px] lg:mb-[80px]">
+      
+        {/* Wrapper agar card tidak terlalu lebar */}
+        <div className="mx-auto w-[100%]">
+          <div className="rounded-none bg-ink-soft px-8 py-10 shadow-lg sm:px-10 sm:py-12 lg:px-16 lg:py-14">
+            <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:items-center">
+              {/* ==========================
+                  LEFT CONTENT
+              ========================== */}
+              <div className="max-w-2xl lg:flex-1">
+                <span className="text-xs uppercase tracking-[0.3em] text-white/60">
+                  Get In Touch
+                </span>
 
-            <h3 className="mt-3 text-xl font-medium text-white sm:text-2xl">
-              Looking for the Perfect Piece?
-            </h3>
+                <h2 className="mt-4 text-3xl font-medium leading-tight text-white lg:text-4xl">
+                  Looking for something special?
+                </h2>
 
-            <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base">
-              Whether you&apos;re searching for an original painting,
-              handcrafted décor, or a unique piece of sterling silver
-              jewelry, our team is ready to help you discover artwork
-              that perfectly suits your home or collection.
-            </p>
+                <p className="mt-5 text-base leading-8 text-white/80">
+                  Explore original paintings, handcrafted Balinese décor, and
+                  sterling silver jewelry thoughtfully created by local artisans.
+                  Whether you're searching for a statement artwork or a unique
+                  handcrafted piece, we're here to help.
+                </p>
 
-            <p className="mt-2 text-xs text-white/60 sm:text-sm">
-              Visit our gallery in Seminyak, Bali, or contact us for personalized recommendations.
-            </p>
-          </div>
+                <p className="mt-4 text-sm leading-7 text-white/60">
+                  Visit Satori Art Gallery in Seminyak, Bali, or contact us for
+                  personalized recommendations and assistance with your
+                  purchase.
+                </p>
+              </div>
 
-          {/* RIGHT: Button */}
-          <div className="flex-shrink-0">
-            <Button
-              href="/contact-us"
-              className="whitespace-nowrap bg-white px-6 py-2.5 text-sm text-link hover:bg-white/90 sm:px-8 sm:py-3 sm:text-base"
-            >
-              Contact Us
-            </Button>
+              {/* ==========================
+                  RIGHT BUTTON
+              ========================== */}
+              <div className="mt-2 lg:ml-16 xl:ml-24 flex-shrink-0">
+                <Button
+                  href="/contact-us"
+                  className="whitespace-nowrap bg-white px-10 py-3 text-base text-link transition hover:bg-white/90"
+                >
+                  Contact Us
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-      </Container>
+      
     </section>
   );
 }

@@ -240,21 +240,21 @@ export const galleryCategories: GalleryCategory[] = [
     id: "paintings",
     title: "Paintings",
     description:
-      "Original works on canvas and paper from painters working in our Seminyak studio.",
+      "Original paintings by local and international artists across a wide range of artistic styles.",
     items: products,
   },
   {
     id: "silver-jewelry",
     title: "Silver Jewelry",
     description:
-      "Hand-forged sterling silver, rooted in the centuries-old silversmithing tradition of Celuk village.",
+      "High quality sterling silver jewellery crafted in Bali with modern and classic designs.",
     items: silverJewelry,
   },
   {
     id: "handcraft",
     title: "Handcraft",
     description:
-      "Woodcarving, weaving, and other handmade objects crafted by local Balinese artisans.",
+      "Handmade Balinese crafts created by local artisans using traditional techniques.",
     items: handcraft,
   },
 ];

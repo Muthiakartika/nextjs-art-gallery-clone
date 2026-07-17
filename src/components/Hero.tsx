@@ -77,11 +77,10 @@ export default function Hero() {
           desktop (lg). */}
       <div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 sm:py-16 md:py-20">
         <h1 className="font-semibold leading-tight text-white">
-          Original Paintings from Our Bali Art Gallery
+        Welcome to Satori Art Gallery 
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:mt-5 sm:text-lg md:mt-6 md:text-xl">
-          A family of artists creating unique paintings from our studio. Each
-          piece tells a story and is meant to become part of yours.
+        Discover original paintings, handmade crafts, and sterling silver jewelry at Satori Art Gallery in Seminyak. Our collection brings together local and international artwork with handcrafted pieces made in Bali.
         </p>
         <div className="mt-6 flex justify-center sm:mt-7 md:mt-8">
           <Button
@@ -89,7 +88,7 @@ export default function Hero() {
             variant="light"
             className="px-6 py-3 text-sm sm:px-8 sm:py-3.5 sm:text-base md:px-9 md:text-base"
           >
-            Explore Originals
+            Explore More
           </Button>
         </div>
       </div>

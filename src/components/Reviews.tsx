@@ -15,12 +15,12 @@ export default function Reviews() {
   const next = () => setIndex((i) => (i + 1) % reviews.length);
 
   return (
-    <section className="py-section">
+    <section className="py-section mt-[-50px]">
       <div className="mb-12 flex justify-center">
         <SectionHeading
           eyebrow="Reviews"
           title="What Our Collectors Say"
-          description="Rated 5 stars by collectors around the world."
+          description="Read what collectors and visitors have shared about their experience at Satori Art Gallery."
         />
       </div>
 

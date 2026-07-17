@@ -13,7 +13,7 @@ export default function Collections() {
         <SectionHeading
           eyebrow="Collections"
           title="Explore the Collections"
-          description="Shop by category — paintings, silver jewelry, and handcraft, each piece made by hand in Bali."
+          description="Browse original paintings, handcrafted silver jewelry, and Balinese handicrafts, all thoughtfully made or curated in Bali."
         />
       </div>
 

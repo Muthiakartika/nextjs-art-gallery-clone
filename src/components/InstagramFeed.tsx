@@ -6,12 +6,12 @@ import BeholdFeed from "@/components/BeholdFeed";
 
 export default function InstagramFeed() {
   return (
-    <section className="pt-[100px] pb-[50px] py-section">
+    <section className="pb-[50px] py-section">
       <div className="mb-10 flex justify-center">
         <SectionHeading
           eyebrow="Follow Us"
           title="@satoriartgallery"
-          description="A closer look at the studio, new arrivals, and behind-the-scenes moments from Ubud."
+          description="See our newest collections, featured artists, and moments from daily life at our gallery in Seminyak."
         />
       </div>
 

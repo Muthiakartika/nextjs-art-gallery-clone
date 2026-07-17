@@ -58,13 +58,13 @@ export default function NewArrivals({
   const newestItems = category.items.slice(0, 6);
 
   return (
-    <section className="pt-[100px] pb-[0px] py-section">
+    <section className="pb-[0px] py-section">
       {/* Section Heading */}
       <div className="flex justify-center">
         <SectionHeading
           eyebrow="New Arrivals"
           title={`Newest ${category.title}`}
-          description={category.description}
+          description="Explore the latest original paintings by local and international artists, now available at our gallery in Seminyak."
         />
       </div>
 

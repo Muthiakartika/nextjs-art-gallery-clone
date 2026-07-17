@@ -15,7 +15,7 @@ export default function ContactUsPage() {
       <SectionHeading
         eyebrow="Get in Touch"
         title="Contact Us"
-        description="Questions about a piece, a commission, or a visit to the studio? We'd love to hear from you."
+        description="Have a question about an artwork, custom commission, or visiting our gallery? We'd be happy to help"
       />
 
       {/* Desktop */}
