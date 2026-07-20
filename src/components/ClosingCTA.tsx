@@ -36,8 +36,8 @@ export default function ClosingCTA() {
                 <p className="mt-5 text-base leading-8 text-white/80">
                   Explore original paintings, handcrafted Balinese décor, and
                   sterling silver jewelry thoughtfully created by local artisans.
-                  Whether you're searching for a statement artwork or a unique
-                  handcrafted piece, we're here to help.
+                  Whether you&apos;re searching for a statement artwork or a unique
+                  handcrafted piece, we&apos;re here to help.
                 </p>
 
                 <p className="mt-4 text-sm leading-7 text-white/60">

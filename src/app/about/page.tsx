@@ -16,7 +16,7 @@ const values = [
   },
   {
     title: "Community",
-    text: "We work closely with artists and artisans across Bali, helping introduce their work to collectors and visitors through our gallery.",
+    text: "We work closely with local artisans across Bali as well as international artists, helping introduce their work to collectors and visitors through our gallery.",
   },
   {
     title: "Sustainability",
@@ -62,8 +62,11 @@ export default function AboutPage() {
         </p>
 
         <p>
-        Today, Satori Art Gallery is home to a diverse collection of original paintings, handcrafted silver jewelry, and Balinese crafts. We work with local artisans and artists from Bali and beyond to present original handmade creations for visitors and collectors.
-
+        {/* Today, Satori Art Gallery is home to a diverse collection of original paintings, handcrafted silver jewelry, and Balinese crafts. We work with local artisans and artists from Bali and beyond to present original handmade creations for visitors and collectors. */}
+        Today, Satori Art Gallery is home to a diverse collection of original
+  paintings, handcrafted silver jewelry, and Balinese crafts. We work with
+  local artisans and artists from Bali, as well as international artists,
+  to present original handmade creations for visitors and collectors.
         </p>
         </div>
       </div>

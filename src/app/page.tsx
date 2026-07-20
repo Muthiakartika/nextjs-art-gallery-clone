@@ -7,6 +7,7 @@ import Reviews from "@/components/Reviews";
 import InstagramFeed from "@/components/InstagramFeed";
 import { galleryCategories } from "@/data/gallery";
 import ClosingCTA from "@/components/ClosingCTA";
+import LocationMap from "@/components/LocationMap";
 
 export default function Home() {
   return (
@@ -27,6 +28,9 @@ export default function Home() {
       {/* Instagram feed comes before Reviews (client revision). */}
       <InstagramFeed />
       <Reviews />
+      {/* Studio location (Google Map) — sits right before the Closing CTA
+          so "here's where we are" leads straight into "come visit / reach out". */}
+      <LocationMap />
       <ClosingCTA />
     </Container>
   );
