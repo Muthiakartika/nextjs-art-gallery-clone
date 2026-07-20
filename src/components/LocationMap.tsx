@@ -23,7 +23,7 @@ const DIRECTIONS_URL =
  */
 export default function LocationMap() {
   return (
-    <section className="py-section mt-[40px] sm:mt-[60px] lg:mt-[-85px]">
+    <section className="py-section mt-[-40px] sm:mt-[-80px] lg:mt-[-85px]">
       <div className="flex justify-center">
         <SectionHeading
           eyebrow="Visit Us"
