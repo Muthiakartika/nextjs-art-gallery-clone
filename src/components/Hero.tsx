@@ -12,9 +12,6 @@ import Button from "@/components/ui/Button";
  * yang smooth tanpa perlu JavaScript (menggunakan CSS animation).
  */
 const HERO_IMAGES = [
-  { src: "/img/hero/hero painting 1.jpg", alt: "Paintings Gallery" },
-  { src: "/img/hero/hero silver 1.jpg", alt: "Silver Jewelry" },
-  { src: "/img/hero/hero craft  1.jpg", alt: "Handcraft" },
   { src: "/img/hero/shop image 1.jpg", alt: "Shop Image with Painting Collection" },
   { src: "/img/hero/shop image 2.jpg", alt: "Shop Image with Art Collection" },
   { src: "/img/hero/shop image 3.jpg", alt: "Shop Image with Statue Collection" },
