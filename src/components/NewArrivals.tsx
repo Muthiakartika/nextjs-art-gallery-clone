@@ -46,14 +46,9 @@
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import ProductCard from "@/components/ProductCard";
-import { galleryCategories, type GalleryCategory } from "@/data/gallery";
+import type { GalleryCategory } from "@/data/gallery";
 import type { Product } from "@/data/products";
 
-// Satu item di grid butuh tahu dari kategori mana asalnya (untuk link +
-// path gambar) DAN posisi aslinya di array kategori itu (ProductCard
-// memakai index untuk membangun nama file gambar, mis. "handcraft image
-// 6.png") — makanya tidak cukup cuma menyimpan Product saja saat item-nya
-// dicampur dari beberapa kategori.
 type PoolItem = { product: Product; category: string; index: number };
 
 function toPool(cat: GalleryCategory): PoolItem[] {
@@ -75,35 +70,15 @@ function pickRandom<T>(items: T[], count: number): T[] {
   return picked;
 }
 
-function shuffle<T>(items: T[]): T[] {
-  return pickRandom(items, items.length);
-}
-
 // Homepage category preview.
-// Menampilkan 6 produk terbaru dari setiap kategori di homepage.
+// Menampilkan 6 produk acak dari kategori (bukan 6 pertama secara urut),
+// supaya susunannya berbeda-beda tiap kali di-build ulang.
 export default function NewArrivals({
   category,
 }: {
   category: GalleryCategory;
 }) {
-  // Untuk section Paintings (satu-satunya yang dipakai di homepage saat
-  // ini), tampilkan campuran acak dari SEMUA kategori — painting, silver
-  // jewelry, dan handcraft (yang juga berisi item "statue"/patung) — 2 item
-  // per kategori, bukan cuma painting saja. Kategori lain tetap memakai
-  // perilaku lama (6 item pertama dari kategorinya sendiri) supaya
-  // komponen ini tetap bisa dipakai ulang seperti semula.
-  const paintingsCategory = galleryCategories.find((c) => c.id === "paintings");
-  const silverCategory = galleryCategories.find((c) => c.id === "silver-jewelry");
-  const handcraftCategory = galleryCategories.find((c) => c.id === "handcraft");
-
-  const newestItems: PoolItem[] =
-    category.id === "paintings" && paintingsCategory && silverCategory && handcraftCategory
-      ? shuffle([
-          ...pickRandom(toPool(paintingsCategory), 2),
-          ...pickRandom(toPool(silverCategory), 2),
-          ...pickRandom(toPool(handcraftCategory), 2),
-        ])
-      : toPool(category).slice(0, 6);
+  const newestItems: PoolItem[] = pickRandom(toPool(category), 6);
 
   return (
     <section className="pb-[0px] py-section">
