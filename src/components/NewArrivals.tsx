@@ -59,26 +59,32 @@ function toPool(cat: GalleryCategory): PoolItem[] {
   }));
 }
 
-// Ambil `count` item acak (tanpa duplikat) dari sebuah array.
-function pickRandom<T>(items: T[], count: number): T[] {
-  const copy = [...items];
-  const picked: T[] = [];
-  for (let i = 0; i < count && copy.length > 0; i++) {
-    const randomIndex = Math.floor(Math.random() * copy.length);
-    picked.push(copy.splice(randomIndex, 1)[0]);
-  }
-  return picked;
-}
+// Susunan tetap (bukan acak) untuk section Paintings di homepage — hasil
+// revisi manual: "Floral Fantasy" (cewek kacamata) menggantikan posisi
+// "Jakkrit Pop Art" (abstrak biru), dan "Balinese Landscape" ditambahkan
+// untuk mengisi slot yang ditinggalkan supaya tetap 6 gambar.
+const FIXED_HOMEPAGE_PAINTING_IDS = [
+  "tranquil-figures",
+  "textured-abstraction",
+  "floral-fantasy",
+  "rhythm-of-work",
+  "balinese-landscape",
+  "balinese-farmer",
+];
 
 // Homepage category preview.
-// Menampilkan 6 produk acak dari kategori (bukan 6 pertama secara urut),
-// supaya susunannya berbeda-beda tiap kali di-build ulang.
 export default function NewArrivals({
   category,
 }: {
   category: GalleryCategory;
 }) {
-  const newestItems: PoolItem[] = pickRandom(toPool(category), 6);
+  const pool = toPool(category);
+  const newestItems: PoolItem[] =
+    category.id === "paintings"
+      ? (FIXED_HOMEPAGE_PAINTING_IDS.map((id) =>
+          pool.find((entry) => entry.product.id === id)
+        ).filter(Boolean) as PoolItem[])
+      : pool.slice(0, 6);
 
   return (
     <section className="pb-[0px] py-section">

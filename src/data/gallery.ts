@@ -10,7 +10,7 @@ export type GalleryCategory = {
 /**
  * DATA PRODUK SILVER JEWELRY
  * ========================
- * Array berisi 14 produk perhiasan perak (lihat jumlah gambar di /img/silver/).
+ * Array berisi 16 produk perhiasan perak (lihat jumlah gambar di /img/silver/).
  *
  * Struktur setiap produk:
  * - id: Unique identifier (lowercase, kebab-case)
@@ -21,8 +21,51 @@ export type GalleryCategory = {
  * - soldOut?: Opsional - tandai true jika produk habis terjual
  *
  * Catatan: Jumlah produk HARUS sesuai dengan jumlah file gambar di /img/silver/
- * Saat ini ada 14 file (gambar 1-6, 9-16 - gambar 7 & 8 tidak ada)
+ *
+ * ====================================================================
+ * CARA GANTI/TUKAR GAMBAR SECARA MANUAL (PENTING — baca sebelum edit!)
+ * ====================================================================
+ * Gambar yang tampil untuk tiap produk itu DITENTUKAN DARI POSISI
+ * (urutan ke berapa) produk itu di array ini, BUKAN dari id/title-nya.
+ * Lihat ProductCard.tsx: produk di posisi ke-N otomatis memakai file
+ * "silver jewelry image N.png". Karena itu ADA 2 cara berbeda untuk
+ * "mengubah gambar", tergantung apa yang mau diubah:
+ *
+ * 1) Mau TUKAR FOTO yang tampil di slot tertentu, tapi title/harga
+ *    produk di slot itu TETAP sama → jangan sentuh array ini sama
+ *    sekali. Cukup RENAME file-nya langsung di folder
+ *    public/img/silver/. Contoh: supaya slot ke-4 menampilkan foto
+ *    yang sekarang ada di "image 8.png", tukar nama filenya:
+ *      "silver jewelry image 4.png" → sementara jadi nama lain
+ *      "silver jewelry image 8.png" → jadi "silver jewelry image 4.png"
+ *      nama sementara tadi → jadi "silver jewelry image 8.png"
+ *    (pakai nama sementara supaya tidak saling menimpa saat rename)
+ *
+ * 2) Mau produk (title/harga) PINDAH POSISI, dan foto ikut produk itu
+ *    → potong-tempel seluruh blok `{ id, title, ... }` produk ke posisi
+ *    baru di array ini. Tapi hati-hati: begitu sebuah produk pindah
+ *    posisi, dia otomatis "mewarisi" foto milik posisi barunya (karena
+ *    foto = posisi, bukan = produk) — jadi title bisa jadi tidak
+ *    nyambung lagi sama fotonya kecuali file gambar juga ditata ulang.
+ *    Untuk kasus paling umum (cuma mau urutan foto berubah, title tetap
+ *    di tempatnya), cara (1) di atas jauh lebih aman dan tidak akan
+ *    pernah salah pasang title.
+ *
+ * 3) Mau HAPUS satu produk dari tampilan → hapus blok `{...}` produknya
+ *    dari array ini, LALU rename ulang file gambar supaya nomornya
+ *    tetap berurutan 1..N tanpa bolong (N = jumlah produk yang tersisa).
+ *    Kalau nomornya dibiarkan bolong (misalnya cuma ada 1,2,3,5,6 tanpa
+ *    4), produk-produk setelah yang bolong itu akan salah ambil gambar.
+ *    Setelah rename gambar, WAJIB jalankan `npm run build` ulang supaya
+ *    perubahannya kelihatan (lihat catatan Windows di CLAUDE.md).
  */
+// Urutan array ini SUDAH disusun ulang sesuai revisi (posisi
+// 1,2,3,8,4,5,6,7,9,10,11,16,13,14,15,12 dari urutan asli) — title, harga,
+// DAN foto ikut pindah bersama sebagai satu paket (karena file gambar di
+// public/img/silver/ juga sudah di-rename dengan permutasi yang sama, jadi
+// tiap produk tetap dapat foto aslinya sendiri, cuma posisi tampilnya yang
+// berubah). Jangan cuma reorder array ini tanpa cek ulang file gambarnya
+// juga sudah sesuai — lihat komentar cara manual di atas.
 const silverJewelry: Product[] = [
   {
     id: "celestial-stacking-ring",
@@ -46,39 +89,39 @@ const silverJewelry: Product[] = [
     medium: "Sterling Silver",
   },
   {
-    id: "layered-chain-bracelet",
-    title: "Layered Chain Bracelet",
-    artist: "Satori Art Gallery",
-    price: 140,
-    medium: "Sterling Silver",
-    soldOut: true,
-  },
-  {
-    id: "minimalist-band-ring",
-    title: "Minimalist Band Ring",
-    artist: "Satori Art Gallery",
-    price: 135,
-    medium: "Sterling Silver",
-  },
-  {
     id: "woven-silver-bangle",
     title: "Woven Silver Bangle",
     artist: "Satori Art Gallery",
-    price: 155,
+    price: 185,
     medium: "Sterling Silver",
   },
   {
     id: "pearl-pendant-necklace",
     title: "Pearl Pendant Necklace",
     artist: "Satori Art Gallery",
-    price: 185,
+    price: 110,
     medium: "Sterling Silver",
   },
   {
     id: "hammered-hoop-earrings",
     title: "Hammered Hoop Earrings",
     artist: "Satori Art Gallery",
-    price: 110,
+    price: 140,
+    medium: "Sterling Silver",
+    soldOut: true,
+  },
+  {
+    id: "layered-chain-bracelet ",
+    title: "Layered Chain Bracelet",
+    artist: "Satori Art Gallery",
+    price: 135,
+    medium: "Sterling Silver",
+  },
+  {
+    id: "minimalist-band-ring",
+    title: " Minimalist Band",
+    artist: "Satori Art Gallery",
+    price: 155,
     medium: "Sterling Silver",
   },
   {
@@ -100,6 +143,13 @@ const silverJewelry: Product[] = [
     title: "Minimal Chain Anklet",
     artist: "Satori Art Gallery",
     price: 195,
+    medium: "Sterling Silver",
+  },
+  {
+    id: "sculptural-silver-earrings",
+    title: "Sculptural Silver Earrings",
+    artist: "Satori Art Gallery",
+    price: 85,
     medium: "Sterling Silver",
   },
   {
@@ -127,18 +177,19 @@ const silverJewelry: Product[] = [
     id: "textured-dome-ring",
     title: "Textured Dome Ring",
     artist: "Satori Art Gallery",
-    price: 85,
-    medium: "Sterling Silver",
-  },
-  {
-    id: "sculptural-silver-earrings",
-    title: "Sculptural Silver Earrings",
-    artist: "Satori Art Gallery",
     price: 190,
     medium: "Sterling Silver",
   },
 ];
 
+// DATA PRODUK HANDCRAFT — array berisi 11 produk (lihat gambar 1-11 di
+// public/img/handcraft/). Aturan gambar-berdasarkan-posisi dan cara
+// tukar/hapus gambar secara manual SAMA seperti silverJewelry di atas —
+// baca komentar panjang di atas array silverJewelry sebelum edit.
+// Awalnya array ini punya 13 produk; "artisan-craft-collection" (gambar
+// 8) dan "feather-wall-decoration" (gambar 13) sudah dihapus dari sini
+// dan foto aslinya diarsipkan sebagai "... (unused).png" di folder
+// gambar, bukan dihapus permanen.
 const handcraft: Product[] = [
   {
     id: "balinese-couple-sculpture",
@@ -189,13 +240,10 @@ const handcraft: Product[] = [
     price: 320,
     medium: "Mixed Handmade Crafts",
   },
-  {
-    id: "artisan-craft-collection",
-    title: "Artisan Craft Collection",
-    artist: "Satori Art Gallery",
-    price: 95,
-    medium: "Mixed Handmade Crafts",
-  },
+  // "artisan-craft-collection" (dulu di sini, pakai gambar 8) sengaja
+  // dihapus dari daftar tampil sesuai permintaan. Foto aslinya masih ada,
+  // diarsipkan sebagai "handcraft image 8 (unused).png" di
+  // public/img/handcraft/ — bukan dihapus permanen, cuma tidak dipakai.
   {
     id: "shell-tribal-doll",
     title: "Shell Tribal Doll",
@@ -224,13 +272,10 @@ const handcraft: Product[] = [
     price: 75,
     medium: "Cast Metal",
   },
-  {
-    id: "feather-wall-decoration",
-    title: "Feather Wall Decoration",
-    artist: "Satori Art Gallery",
-    price: 245,
-    medium: "Natural Feathers & Shell",
-  },
+  // "feather-wall-decoration" (dulu di sini, pakai gambar 13) juga sengaja
+  // dihapus — array ini sekarang berhenti di 11 item supaya jumlahnya pas
+  // sama dengan jumlah file gambar 1-11 di public/img/handcraft/. Foto
+  // aslinya diarsipkan sebagai "handcraft image 13 (unused).png".
 ];
 
 // Three shop categories shown on the Gallery page, each with its own
