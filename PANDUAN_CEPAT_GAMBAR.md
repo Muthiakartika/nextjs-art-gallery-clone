@@ -5,9 +5,10 @@
 | Kategori | Jumlah Produk | Jumlah Gambar | Folder | Pola Nama File |
 |----------|--------------|---------------|--------|----------------|
 | Paintings | 23 | 23 | `/img/painting/` | `painting images 1.png` |
-| Silver Jewelry | 14 | 14 | `/img/silver/` | `silver jewelry image 1.png` |
-| Handcraft | 13 | 13 | `/img/handcraft/` | `handcraft image 1.png` |
-| Hero | 3 | 3 | `/img/hero/` | `hero painting 1.jpg` |
+| Silver Jewelry | 16 | 16 | `/img/silver/` | `silver jewelry image 1.png` |
+| Handcraft | 12 | 12 | `/img/handcraft/` | `handcraft image 1.png` |
+| Hero | 4 slide | 4 | `/img/hero/` | campuran (lihat di bawah) |
+| Collections | 3 kartu | 3 (dipakai ulang dari folder hero) | `/img/hero/` | campuran (lihat di bawah) |
 | About | 1 | 1 | `/img/about/` | `abaout us image.jpg` |
 
 ---
@@ -18,24 +19,23 @@
 public/
 └── img/
     ├── about/
-    │   └── abaout us image.jpg                    ← Gambar About Page
+    │   └── abaout us image.jpg                    ← Gambar About Page (nama file ada typo "abaout", sengaja dibiarkan — path di kode harus sama persis)
     ├── hero/
-    │   ├── hero painting 1.jpg                    ← Hero slideshow
-    │   ├── hero silver 1.jpg                      ← Hero slideshow
-    │   └── hero craft  1.jpg                      ← Hero slideshow
+    │   ├── hero painting 1.jpg                    ← Dipakai di Hero slideshow
+    │   ├── hero painting 2.jpg                    ← Dipakai di Collections (kartu Paintings), BUKAN di Hero
+    │   ├── hero silver 1.jpg                      ← Dipakai di Hero slideshow & Collections
+    │   ├── hero craft  1.jpg                      ← Dipakai di Hero slideshow & Collections (ada 2 spasi sebelum "1", ikuti persis)
+    │   ├── shop image 1.jpg                       ⚠️ ada di folder tapi belum dipakai di kode manapun
+    │   ├── shop image 2.jpg                       ⚠️ ada di folder tapi belum dipakai di kode manapun
+    │   └── shop image 3.jpg                       ← Dipakai di Hero slideshow (slide ke-4)
     ├── painting/
     │   ├── painting images 1.png ... 23.png       ← 23 produk paintings
+    │   └── painting images 16 (2).png             ⚠️ file duplikat, tidak dipakai di kode manapun
     ├── silver/
-    │   ├── silver jewelry image 1.png             ← 14 produk silver
-    │   ├── silver jewelry image 2.png
-    │   ├── silver jewelry image 3.png
-    │   ├── silver jewelry image 4.png
-    │   ├── silver jewelry image 5.png
-    │   ├── silver jewelry image 6.png
-    │   ├── silver jewelry image 9.png             ⚠️ 7 & 8 tidak ada
-    │   ├── silver jewelry image 10-16.png
+    │   └── silver jewelry image 1.png ... 16.png  ← 16 produk silver (lengkap 1-16, tidak ada yang bolong)
     └── handcraft/
-        └── handcraft image 1.png ... 13.png       ← 13 produk handcraft
+        ├── handcraft image 1.png ... 12.png       ← 12 produk handcraft
+        └── handcraft image 8 (unused).png         ← Diarsipkan, sengaja tidak dipakai (lihat komentar di gallery.ts)
 ```
 
 ---
@@ -49,7 +49,7 @@ public/
 | `src/components/CollectionCard.tsx` | Ganti Placeholder → Image | COLLECTION_IMAGE_MAP |
 | `src/app/about/page.tsx` | Ganti Placeholder → Image | Path `/img/about/abaout us image.jpg` |
 | `src/data/products.ts` | Tambah 15 produk paintings | Total 23 produk paintings |
-| `src/data/gallery.ts` | Tambah 10 silver + 9 handcraft | Silver 14, Handcraft 13 |
+| `src/data/gallery.ts` | Data silver jewelry & handcraft | Silver 16, Handcraft 12 |
 
 ---
 
@@ -87,9 +87,9 @@ public/
 
 ---
 
-### Untuk Silver Jewelry (14 sudah ada, mau tambah ke-15):
+### Untuk Silver Jewelry (16 sudah ada, mau tambah ke-17):
 
-1. **Upload gambar**: Letakkan file `silver jewelry image 15.png` di `/public/img/silver/`
+1. **Upload gambar**: Letakkan file `silver jewelry image 17.png` di `/public/img/silver/`
 
 2. **Update data**: Di `src/data/gallery.ts`, tambah ke array `silverJewelry[]`:
 ```typescript
@@ -106,6 +106,27 @@ public/
 
 ---
 
+### Untuk Handcraft (12 sudah ada, mau tambah ke-13):
+
+1. **Upload gambar**: Letakkan file `handcraft image 13.png` di `/public/img/handcraft/`
+
+2. **Update data**: Di `src/data/gallery.ts`, tambah ke array `handcraft[]` (paling bawah):
+```typescript
+{
+  id: "new-handcraft-id",
+  title: "New Handcraft Title",
+  artist: "Satori Art Gallery",
+  price: 150,
+  medium: "Hand-Carved Wood",
+}
+```
+
+3. **Build**: `npm run build && npm run start`
+
+⚠️ Ingat: kalau nanti menghapus salah satu produk handcraft, file gambar di posisi setelahnya HARUS di-rename ulang supaya nomornya tetap 1..12 berurutan tanpa bolong — kalau tidak, produk-produk setelahnya akan otomatis salah ambil foto (persis masalah yang pernah terjadi sebelumnya).
+
+---
+
 ## 🚀 Kode Penting
 
 ### ProductCard - Image Path Generation
@@ -117,19 +138,22 @@ const imagePath = `/img/${categoryMap.folder}/${categoryMap.pattern} ${imageNum}
 ```
 
 ### Hero - Slideshow Array
+Bukan berbasis posisi/index seperti ProductCard — tiap slide langsung menunjuk ke satu file gambar. Tambah/kurangi entri array untuk tambah/kurangi jumlah slide (durasi otomatis menyesuaikan).
 ```typescript
 const HERO_IMAGES = [
-  { src: "/img/hero/hero painting 1.jpg", alt: "Paintings" },
-  { src: "/img/hero/hero silver 1.jpg", alt: "Silver" },
-  { src: "/img/hero/hero craft  1.jpg", alt: "Handcraft" },
+  { src: "/img/hero/hero painting 1.jpg", alt: "Painting Collection" },
+  { src: "/img/hero/hero craft  1.jpg", alt: "Craft Collection" },
+  { src: "/img/hero/hero silver 1.jpg", alt: "Silver Collection" },
+  { src: "/img/hero/shop image 3.jpg", alt: "Shop Image with Statue Collection" },
 ];
-const CYCLE_SECONDS = 18; // 3 gambar × 6 detik
+const CYCLE_SECONDS = HERO_IMAGES.length * 6; // 4 gambar × 6 detik = 24 detik
 ```
 
 ### Collections - Image Mapping
+Juga langsung menunjuk file (bukan berbasis posisi), satu gambar tetap per kategori.
 ```typescript
 const COLLECTION_IMAGE_MAP = {
-  paintings: "/img/hero/hero painting 1.jpg",
+  paintings: "/img/hero/hero painting 2.jpg",
   "silver-jewelry": "/img/hero/hero silver 1.jpg",
   handcraft: "/img/hero/hero craft  1.jpg",
 };
@@ -207,5 +231,5 @@ Berisi:
 
 ---
 
-**Last Updated**: 2026-07-15  
+**Last Updated**: 2026-07-25 (angka & contoh kode disinkronkan ulang dengan kode aktual: Silver Jewelry 16, Handcraft 12, Hero 4 slide)  
 Hubungi untuk pertanyaan atau update lebih lanjut.

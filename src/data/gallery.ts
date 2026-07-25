@@ -182,14 +182,13 @@ const silverJewelry: Product[] = [
   },
 ];
 
-// DATA PRODUK HANDCRAFT — array berisi 11 produk (lihat gambar 1-11 di
+// DATA PRODUK HANDCRAFT — array berisi 12 produk (lihat gambar 1-12 di
 // public/img/handcraft/). Aturan gambar-berdasarkan-posisi dan cara
 // tukar/hapus gambar secara manual SAMA seperti silverJewelry di atas —
 // baca komentar panjang di atas array silverJewelry sebelum edit.
-// Awalnya array ini punya 13 produk; "artisan-craft-collection" (gambar
-// 8) dan "feather-wall-decoration" (gambar 13) sudah dihapus dari sini
-// dan foto aslinya diarsipkan sebagai "... (unused).png" di folder
-// gambar, bukan dihapus permanen.
+// "artisan-craft-collection" (dulu memakai gambar 8) sudah dihapus dari
+// daftar tampil; foto aslinya diarsipkan sebagai "handcraft image 8
+// (unused).png", bukan dihapus permanen.
 const handcraft: Product[] = [
   {
     id: "balinese-couple-sculpture",
@@ -233,12 +232,13 @@ const handcraft: Product[] = [
     price: 120,
     medium: "Hand-Carved Wood",
   },
+    
   {
-    id: "artisan-gallery-display",
-    title: "Artisan Gallery Display",
+    id: "elephant-candle-holder",
+    title: "Elephant Candle Holder",
     artist: "Satori Art Gallery",
-    price: 320,
-    medium: "Mixed Handmade Crafts",
+    price: 110,
+    medium: "Metal Craft",
   },
   // "artisan-craft-collection" (dulu di sini, pakai gambar 8) sengaja
   // dihapus dari daftar tampil sesuai permintaan. Foto aslinya masih ada,
@@ -251,13 +251,7 @@ const handcraft: Product[] = [
     price: 140,
     medium: "Natural Shell & Wood",
   },
-  {
-    id: "decorative-lotus-candle-holder",
-    title: "Decorative Lotus Candle Holder",
-    artist: "Satori Art Gallery",
-    price: 110,
-    medium: "Metal Craft",
-  },
+ 
   {
     id: "golden-buddha-head",
     title: "Golden Buddha Head",
@@ -272,10 +266,21 @@ const handcraft: Product[] = [
     price: 75,
     medium: "Cast Metal",
   },
-  // "feather-wall-decoration" (dulu di sini, pakai gambar 13) juga sengaja
-  // dihapus — array ini sekarang berhenti di 11 item supaya jumlahnya pas
-  // sama dengan jumlah file gambar 1-11 di public/img/handcraft/. Foto
-  // aslinya diarsipkan sebagai "handcraft image 13 (unused).png".
+  {
+    id: "feather-wall-decoration",
+    title: "Feather Wall Decoration",
+    artist: "Satori Art Gallery",
+    price: 120,
+    medium: "Handmade Crafts",
+  },
+
+  {
+    id: "artisan-gallery-display",
+    title: "Artisan Gallery Display",
+    artist: "Satori Art Gallery",
+    price: 320,
+    medium: "Mixed Handmade Crafts",
+  },
 ];
 
 // Three shop categories shown on the Gallery page, each with its own

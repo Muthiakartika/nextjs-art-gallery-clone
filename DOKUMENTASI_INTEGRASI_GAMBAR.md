@@ -17,10 +17,10 @@ Proyek ini telah diintegrasikan dengan **gambar real** untuk menampilkan produk 
 
 ### Status Akhir:
 - ✅ **Paintings**: 23 produk dengan 23 gambar
-- ✅ **Silver Jewelry**: 14 produk dengan 14 gambar
-- ✅ **Handcraft**: 13 produk dengan 13 gambar
-- ✅ **Hero Section**: 3 gambar slideshow (paintings, silver, handcraft)
-- ✅ **Collection Cards**: 3 kartu kategori dengan gambar hero
+- ✅ **Silver Jewelry**: 16 produk dengan 16 gambar
+- ✅ **Handcraft**: 12 produk dengan 12 gambar
+- ✅ **Hero Section**: 4 gambar slideshow (painting, craft, silver, shop)
+- ✅ **Collection Cards**: 3 kartu kategori, masing-masing pakai 1 gambar tetap dari folder hero
 - ✅ **About Page**: 1 gambar studio
 
 ---
@@ -32,34 +32,36 @@ Proyek ini telah diintegrasikan dengan **gambar real** untuk menampilkan produk 
 ```
 public/img/
 ├── about/
-│   └── abaout us image.jpg          (1 gambar studio)
+│   └── abaout us image.jpg          (1 gambar studio — nama file ada typo "abaout", sengaja dibiarkan)
 ├── hero/
-│   ├── hero painting 1.jpg          (Gambar hero paintings)
-│   ├── hero silver 1.jpg            (Gambar hero silver jewelry)
-│   └── hero craft  1.jpg            (Gambar hero handcraft)
+│   ├── hero painting 1.jpg          (Dipakai di Hero slideshow)
+│   ├── hero painting 2.jpg          (Dipakai di Collections, kartu Paintings — bukan di Hero)
+│   ├── hero silver 1.jpg            (Dipakai di Hero slideshow & Collections)
+│   ├── hero craft  1.jpg            (Dipakai di Hero slideshow & Collections — ada 2 spasi sebelum "1")
+│   ├── shop image 1.jpg             (Belum dipakai di kode manapun)
+│   ├── shop image 2.jpg             (Belum dipakai di kode manapun)
+│   └── shop image 3.jpg             (Dipakai di Hero slideshow, slide ke-4)
 ├── painting/
-│   ├── painting images 1.png        (23 file gambar)
+│   ├── painting images 1.png        (23 file gambar dipakai)
 │   ├── painting images 2.png
-│   └── ... hingga painting images 23.png
+│   ├── ... hingga painting images 23.png
+│   └── painting images 16 (2).png   (file duplikat, tidak dipakai)
 ├── silver/
-│   ├── silver jewelry image 1.png   (14 file gambar)
+│   ├── silver jewelry image 1.png   (16 file gambar, lengkap 1-16 tanpa bolong)
 │   ├── silver jewelry image 2.png
-│   ├── silver jewelry image 3.png
-│   ├── silver jewelry image 4.png
-│   ├── silver jewelry image 5.png
-│   ├── silver jewelry image 6.png
-│   ├── silver jewelry image 9.png   (Perhatian: 7 & 8 tidak ada)
 │   └── ... hingga silver jewelry image 16.png
 └── handcraft/
-    ├── handcraft image 1.png        (13 file gambar)
+    ├── handcraft image 1.png        (12 file gambar dipakai)
     ├── handcraft image 2.png
-    └── ... hingga handcraft image 13.png
+    ├── ... hingga handcraft image 12.png
+    └── handcraft image 8 (unused).png  (diarsipkan, sengaja tidak dipakai)
 ```
 
 ### Catatan Penting:
-- File gambar silver jewelry **tidak ada untuk nomor 7 dan 8**
-- Jika ada file tambahan, tambahkan dengan nama sesuai pola
+- Semua 16 gambar silver jewelry sudah lengkap (1-16, tidak ada yang bolong)
+- Jika ada file tambahan, tambahkan dengan nama sesuai pola dan nomor urut berikutnya
 - Semua file menggunakan format PNG kecuali hero section (JPG)
+- Ada beberapa file "cadangan"/tidak terpakai di folder (`(unused)`, `(2)`, atau file `shop image` yang belum dipasang) — sengaja dibiarkan sebagai arsip, bukan bug
 
 ---
 
@@ -99,19 +101,21 @@ const imagePath = `/img/${categoryMap.folder}/${categoryMap.pattern} ${imageNum}
 
 **Perubahan Utama**:
 - Mengganti dummy image seeds dengan array gambar real
-- 3 gambar hero untuk slideshow
+- 4 gambar hero untuk slideshow
 
 **Cara Kerja**:
 ```typescript
-// Array berisi 3 gambar hero yang akan diputar
+// Array berisi 4 gambar hero yang akan diputar
 const HERO_IMAGES = [
-  { src: "/img/hero/hero painting 1.jpg", alt: "Paintings Gallery" },
-  { src: "/img/hero/hero silver 1.jpg", alt: "Silver Jewelry" },
-  { src: "/img/hero/hero craft  1.jpg", alt: "Handcraft" },
+  { src: "/img/hero/hero painting 1.jpg", alt: "Painting Collection" },
+  { src: "/img/hero/hero craft  1.jpg", alt: "Craft Collection" },
+  { src: "/img/hero/hero silver 1.jpg", alt: "Silver Collection" },
+  { src: "/img/hero/shop image 3.jpg", alt: "Shop Image with Statue Collection" },
 ];
 
-// Siklus: 3 gambar × 6 detik = 18 detik per putaran lengkap
-const CYCLE_SECONDS = 18;
+// Siklus: 4 gambar × 6 detik = 24 detik per putaran lengkap
+// (dihitung otomatis dari HERO_IMAGES.length, jadi selalu ikut kalau jumlah slide berubah)
+const CYCLE_SECONDS = HERO_IMAGES.length * 6;
 ```
 
 **Animasi CSS**:
@@ -131,9 +135,10 @@ const CYCLE_SECONDS = 18;
 
 **Cara Kerja**:
 ```typescript
-// Map kategori ke gambar hero
+// Map kategori ke gambar hero (paintings sengaja pakai foto ke-2 supaya
+// beda dari slide pertama Hero, biar tidak terasa mengulang gambar yang sama)
 const COLLECTION_IMAGE_MAP = {
-  paintings: "/img/hero/hero painting 1.jpg",
+  paintings: "/img/hero/hero painting 2.jpg",
   "silver-jewelry": "/img/hero/hero silver 1.jpg",
   handcraft: "/img/hero/hero craft  1.jpg",
 };
@@ -170,7 +175,7 @@ const COLLECTION_IMAGE_MAP = {
 
 ### File yang Diubah
 - `src/data/products.ts` - Data paintings (23 produk)
-- `src/data/gallery.ts` - Data silver jewelry (14) & handcraft (13)
+- `src/data/gallery.ts` - Data silver jewelry (16) & handcraft (12)
 
 ### Struktur Data Product
 ```typescript
@@ -187,29 +192,31 @@ type Product = {
 ### Contoh Data Silver Jewelry
 ```typescript
 {
-  id: "moon-phase-ring",
-  title: "Moon Phase Ring",
-  artist: "Kadek Wirawan",
+  id: "celestial-stacking-ring",
+  title: "Celestial Stacking Ring",
+  artist: "Satori Art Gallery",
   price: 120,
   medium: "Sterling Silver",
 }
 ```
 
-### Daftar Lengkap Produk Silver Jewelry (14):
-1. Moon Phase Ring
-2. Lotus Drop Earrings
-3. Celuk Filigree Bracelet
-4. Frangipani Pendant Necklace
-5. Temple Gate Ring
-6. Turquoise Silver Bangle
-7. Pearl Choker Necklace
-8. Intricate Filigree Earrings
-9. Coral Gemstone Ring
-10. Jade Pendant Necklace
-11. Moonstone Tennis Bracelet
-12. Wide Silver Cuff
-13. Amethyst Cluster Ring
-14. Mother of Pearl Brooch
+### Daftar Lengkap Produk Silver Jewelry (16):
+1. Celestial Stacking Ring
+2. Lotus Pearl Necklace
+3. Interlocking Chain Necklace
+4. Woven Silver Bangle
+5. Pearl Pendant Necklace
+6. Hammered Hoop Earrings
+7. Layered Chain Bracelet
+8. Minimalist Band
+9. Twisted Stack Rings
+10. Modern Hoop Earrings
+11. Minimal Chain Anklet
+12. Sculptural Silver Earrings
+13. Pearl Sunburst Necklace
+14. Blue Crystal Ring
+15. Woven Silver Ring
+16. Textured Dome Ring
 
 ---
 
@@ -227,7 +234,7 @@ type Product = {
 4. Replace `Placeholder` dengan `Image` component
 
 ### Step 3: Update Hero Component
-1. Buat array HERO_IMAGES dengan path ke 3 gambar hero
+1. Buat array HERO_IMAGES dengan path ke gambar-gambar hero (saat ini 4)
 2. Replace dummy image seeds dengan array baru
 3. Adjust CYCLE_SECONDS jika jumlah gambar berubah
 
@@ -293,62 +300,72 @@ index = 22 → imageNum = "23" → "/img/painting/painting images 23.png"
 <section>
   <!-- Background image slideshow -->
   <div class="absolute inset-0 -z-10">
-    <!-- 3 Image layers, semua absolute positioned -->
+    <!-- 4 Image layers, semua absolute positioned -->
     <div class="hero-slide">
       <Image src="/img/hero/hero painting 1.jpg" />
+    </div>
+    <div class="hero-slide">
+      <Image src="/img/hero/hero craft  1.jpg" />
     </div>
     <div class="hero-slide">
       <Image src="/img/hero/hero silver 1.jpg" />
     </div>
     <div class="hero-slide">
-      <Image src="/img/hero/hero craft 1.jpg" />
+      <Image src="/img/hero/shop image 3.jpg" />
     </div>
-    
+
     <!-- Dark overlay untuk readability teks -->
     <div class="absolute inset-0 bg-black/60" />
   </div>
   
   <!-- Text content di atas background -->
   <div class="text-center">
-    <h1>Original Paintings from Our Bali Art Gallery</h1>
+    <h1>Welcome to Satori Art Gallery</h1>
     <p>...</p>
   </div>
 </section>
 ```
 
-**Animasi CSS** (di `globals.css`):
+**Animasi CSS** (di `globals.css`, persentase di bawah mengasumsikan 4 slide — tiap slide kebagian 25% dari satu putaran):
 ```css
 .hero-slide {
-  animation: heroFade 18s infinite;
-  /* animationDelay berbeda untuk setiap layer */
+  opacity: 0;
+  animation-name: heroFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  /* animation-duration & animation-delay diisi lewat inline style di Hero.tsx,
+     beda-beda tiap slide, supaya urutan munculnya bergantian rapi */
 }
 
 @keyframes heroFade {
   0% { opacity: 0; }
-  5% { opacity: 1; }
-  33.33% { opacity: 1; }
-  38.33% { opacity: 0; }
+  3% { opacity: 1; }
+  22% { opacity: 1; }
+  25% { opacity: 0; }
   100% { opacity: 0; }
 }
 
 .hero-slide-img {
-  animation: heroZoom 18s infinite;
+  animation-name: heroZoom;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 @keyframes heroZoom {
   0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+  100% { transform: scale(1.12); }
 }
 ```
 
 **Cara Kerjanya**:
-- 3 layer gambar stack di atas satu sama lain (absolute positioned)
-- Setiap layer punya delay berbeda (0s, 6s, 12s)
-- Animasi: 18 detik per siklus (6s per gambar)
-- Gambar 1: Opacity 1 dari 0-6s, fade out 5-6s
-- Gambar 2: Opacity 1 dari 6-12s (dimulai saat gambar 1 fade out), fade out 11-12s
-- Gambar 3: Opacity 1 dari 12-18s, fade out 17-18s
-- Repeat...
+- 4 layer gambar stack di atas satu sama lain (absolute positioned)
+- Setiap layer punya delay berbeda (0s, 6s, 12s, 18s) — dihitung otomatis dari `i * (CYCLE_SECONDS / HERO_IMAGES.length)`
+- Animasi: 24 detik per siklus (6s per gambar, karena ada 4 gambar)
+- Gambar 1: Opacity 1 dari 0-6s, fade out di akhir slot itu
+- Gambar 2: Opacity 1 dari 6-12s (dimulai saat gambar 1 fade out)
+- Gambar 3: Opacity 1 dari 12-18s
+- Gambar 4: Opacity 1 dari 18-24s
+- Repeat... (kalau jumlah gambar di `HERO_IMAGES` berubah, keyframe `heroFade` di atas perlu disesuaikan lagi persentasenya: 100% dibagi jumlah gambar)
 
 ---
 
@@ -459,8 +476,8 @@ npm run start
 ### Q6: Bagaimana mengubah aspek ratio?
 **Untuk ProductCard** (dari 3:4 ke 1:1):
 ```tsx
-<div className="relative overflow-hidden rounded-none border-[5px] border-white aspect-square">
-  {/* dari aspect-[3/4] → aspect-square */}
+<div className="relative overflow-hidden rounded-none border-[3px] border-white aspect-square">
+  {/* dari aspect-[3/4] → aspect-square (border-[3px] mengikuti ProductCard.tsx saat ini) */}
 </div>
 ```
 
@@ -523,6 +540,6 @@ Semua comment dalam code membantu pemahaman mendalam tentang setiap bagian yang 
 ---
 
 **Dibuat**: 2026-07-15  
-**Last Updated**: 2026-07-15  
+**Last Updated**: 2026-07-25 (angka, contoh kode, dan daftar produk disinkronkan ulang dengan kode aktual: Silver Jewelry 16, Handcraft 12, Hero 4 slide/24 detik per siklus)  
 **Bahasa**: Indonesia  
 **Status**: Selesai ✅
