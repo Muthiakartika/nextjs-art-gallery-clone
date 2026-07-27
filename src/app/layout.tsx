@@ -19,6 +19,15 @@ export const metadata: Metadata = {
   title: "Satori Art Gallery",
   description:
     "Original paintings, silver jewelry, and handcraft from our Ubud studio in Bali, carefully shipped worldwide.",
+  // favicon.ico / icon.png / apple-icon.png in src/app/ are picked up
+  // automatically by Next.js (App Router file convention) — manifest is
+  // the only piece that needs wiring up by hand, for Android/PWA "add to
+  // home screen" icons.
+  manifest: "/manifest.json",
+};
+
+export const viewport = {
+  themeColor: "#7e8770",
 };
 
 export default function RootLayout({
