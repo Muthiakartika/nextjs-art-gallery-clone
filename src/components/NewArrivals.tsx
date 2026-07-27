@@ -63,13 +63,16 @@ function toPool(cat: GalleryCategory): PoolItem[] {
 // revisi manual: "Floral Fantasy" (cewek kacamata) menggantikan posisi
 // "Jakkrit Pop Art" (abstrak biru), dan "Balinese Landscape" ditambahkan
 // untuk mengisi slot yang ditinggalkan supaya tetap 6 gambar.
+// "Balinese Farmer" diganti "Coral Transition" (abstrak tekstur oranye/
+// biru, tanpa figur orang) supaya tidak terkesan "petani" lagi dan tidak
+// dobel secara visual dengan foto-foto di feed Instagram.
 const FIXED_HOMEPAGE_PAINTING_IDS = [
   "tranquil-figures",
   "textured-abstraction",
   "floral-fantasy",
   "rhythm-of-work",
   "balinese-landscape",
-  "balinese-farmer",
+  "coral-transition",
 ];
 
 // Homepage category preview.
