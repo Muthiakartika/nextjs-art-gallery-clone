@@ -68,7 +68,7 @@ export default function LocationMap() {
                 Hours
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/75">
-                Daily, 9:00 AM – 6:00 PM (Bali time)
+                Daily, 10:00 AM – 9:30 PM (Bali time)
               </p>
             </div>
           </div>
@@ -80,8 +80,8 @@ export default function LocationMap() {
                 Contact
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/75">
-                <a href="tel:+62361123456" className="transition-colors hover:text-primary">
-                  +62 361 123 456
+                <a href="tel:+6289508117898" className="transition-colors hover:text-primary">
+                  +62 895 0811 7898
                 </a>
               </p>
             </div>

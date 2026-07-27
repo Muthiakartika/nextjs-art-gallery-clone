@@ -54,10 +54,10 @@ export default function ContactUsPage() {
 
               <p>
                 <a
-                  href="tel:+62361123456"
+                  href="tel:+6289508117898"
                   className="hover:text-accent"
                 >
-                  +62 361 123 456
+                  +62 895 0811 7898
                 </a>
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function ContactUsPage() {
 
             <div className="mt-3 space-y-2 text-sm text-text-secondary">
               <p>hello@satoriartgallery.com</p>
-              <p>+62 361 123 456</p>
+              <p>+62 895 0811 7898</p>
             </div>
           </div>
 
@@ -118,7 +118,7 @@ export default function ContactUsPage() {
             </h3>
 
             <p className="mt-3 text-sm text-text-secondary">
-              Daily, 9:00 AM – 6:00 PM (Bali time)
+              Daily, 10:00 AM – 9:30 PM (Bali time)
             </p>
           </div>
 

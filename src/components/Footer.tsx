@@ -91,8 +91,8 @@ export default function Footer() {
                 Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361
               </p>
               <p>
-                <a href="tel:+62361123456" className="transition-colors hover:text-accent">
-                  +62 361 123 456
+                <a href="tel:+6289508117898" className="transition-colors hover:text-accent">
+                  +62 895 0811 7898
                 </a>
               </p>
               <p>

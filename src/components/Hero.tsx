@@ -70,7 +70,7 @@ export default function Hero() {
         ))}
 
         {/* Overlay gelap supaya teks tetap mudah dibaca di atas foto */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/35" />
       </div>
 
       {/* Teks di tengah. Ukuran font sengaja dibedakan per breakpoint agar
