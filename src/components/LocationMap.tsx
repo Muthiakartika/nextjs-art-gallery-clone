@@ -80,7 +80,7 @@ export default function LocationMap() {
                 Contact
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-white/75">
-                <a href="tel:+6289508117898" className="transition-colors hover:text-primary">
+                <a href="https://wa.me/6289508117898" className="transition-colors hover:text-primary">
                   +62 895 0811 7898
                 </a>
               </p>

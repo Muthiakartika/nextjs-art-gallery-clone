@@ -54,7 +54,7 @@ export default function ContactUsPage() {
 
               <p>
                 <a
-                  href="tel:+6289508117898"
+                  href="https://wa.me/6289508117898"
                   className="hover:text-accent"
                 >
                   +62 895 0811 7898
