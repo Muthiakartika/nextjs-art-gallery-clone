@@ -38,6 +38,10 @@ export default function CollectionCard({
         fill
         className="object-cover transition-transform duration-500 group-hover:scale-105"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        // Only ever 3 cards total (one per category), always rendered
+        // together with no scrolling between them — all 3 count as
+        // above-the-fold, so all get eager-loaded like Hero/ProductCard do.
+        priority={index < 3}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-6">

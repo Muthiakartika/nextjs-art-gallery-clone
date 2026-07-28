@@ -48,7 +48,7 @@ export default function AboutPage() {
             alt="Our Studio in Ubud"
             fill
             className="object-cover"
-            sizes="(max-width: 1024px) 200vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
         </div>

@@ -74,11 +74,11 @@ export const products: Product[] = [
     medium: "Oil on Canvas",
   },
   {
-    id: "textured-abstraction",
-    title: "Textured Abstraction",
-    artist: "Satori Art Gallery",
-    price: 590,
-    medium: "Oil on Canvas",
+    id: "a-hand-painted-balinese-vintage-artwork-by-shivatri",
+    title: "A hand-painted Balinese vintage artwork by Shivatri",
+    artist: "Shivatri",
+    price: 540,
+    medium: "Hand-Painted Balinese Vintage Artwork",
   },
   {
     id: "structure-of-the-sky",
@@ -120,6 +120,13 @@ export const products: Product[] = [
     title: "Coral Transition",
     artist: "Satori Art Gallery",
     price: 580,
+    medium: "Oil on Canvas",
+  },
+  {
+    id: "textured-abstraction",
+    title: "Textured Abstraction",
+    artist: "Satori Art Gallery",
+    price: 590,
     medium: "Oil on Canvas",
   },
   {

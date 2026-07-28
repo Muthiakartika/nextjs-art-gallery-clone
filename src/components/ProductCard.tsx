@@ -35,15 +35,25 @@ const CATEGORY_IMAGE_MAP: Record<string, { folder: string; pattern: string }> =
  * - product: Data produk (judul, artis, medium, harga, dll)
  * - index: Nomor urut produk (0-based) untuk mapping ke gambar
  * - category: Slug kategori (paintings, silver-jewelry, handcraft)
+ * - priority: opsional — kalau tidak diisi, default-nya `index < 3`. Itu
+ *   cuma benar kalau `index` juga sama dengan posisi render di grid (mis.
+ *   GalleryCategorySection / ProductCategoryPage, yang me-render
+ *   `category.items` apa adanya). Untuk grid yang menyusun ULANG/memilih
+ *   subset produk (mis. NewArrivals, yang `index`-nya adalah posisi produk
+ *   di KATALOG, bukan di grid itu sendiri), caller WAJIB kirim `priority`
+ *   sendiri berdasarkan posisi render-nya — kalau tidak, next/image bisa
+ *   salah nge-lazy-load gambar yang sebenarnya sudah kelihatan di layar.
  */
 export default function ProductCard({
   product,
   index = 0,
   category = "paintings",
+  priority,
 }: {
   product: Product;
   index?: number;
   category?: string;
+  priority?: boolean;
 }) {
   // Ambil konfigurasi folder dan pola nama file untuk kategori yang dipilih
   const categoryMap = CATEGORY_IMAGE_MAP[category] || CATEGORY_IMAGE_MAP.paintings;
@@ -72,7 +82,7 @@ export default function ProductCard({
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          priority={index < 3}
+          priority={priority ?? index < 3}
         />
       </div>
       <div className="mt-4 flex flex-col gap-1 text-center">

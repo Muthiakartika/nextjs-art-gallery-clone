@@ -59,20 +59,24 @@ function toPool(cat: GalleryCategory): PoolItem[] {
   }));
 }
 
-// Susunan tetap (bukan acak) untuk section Paintings di homepage — hasil
-// revisi manual: "Floral Fantasy" (cewek kacamata) menggantikan posisi
-// "Jakkrit Pop Art" (abstrak biru), dan "Balinese Landscape" ditambahkan
-// untuk mengisi slot yang ditinggalkan supaya tetap 6 gambar.
-// "Balinese Farmer" diganti "Coral Transition" (abstrak tekstur oranye/
-// biru, tanpa figur orang) supaya tidak terkesan "petani" lagi dan tidak
-// dobel secara visual dengan foto-foto di feed Instagram.
+// Susunan tetap (bukan acak) untuk section Paintings di homepage — 12
+// lukisan sesuai urutan nomor file persis dari client (painting images
+// 2,3,4,5,7,22,6,8,9,10,11,12). Grid di bawah otomatis menyesuaikan jadi
+// 4 kolom di desktop (3 baris × 4) supaya tetap terasa rapi seperti
+// dinding galeri, bukan cuma daftar gambar panjang ke bawah.
 const FIXED_HOMEPAGE_PAINTING_IDS = [
-  "tranquil-figures",
-  "textured-abstraction",
-  "floral-fantasy",
-  "rhythm-of-work",
-  "balinese-landscape",
-  "coral-transition",
+  "balinese-woman", // painting images 2
+  "abstract-composition", // painting images 3
+  "modern-pop-art", // painting images 4
+  "the-fisherman", // painting images 5
+  "balinese-landscape", // painting images 7
+  "balinese-woman-with-olive-branch", // painting images 22
+  "offering-procession", // painting images 6
+  "abstract-balinese-figure", // painting images 8
+  "serene-portrait", // painting images 9
+  "textured-abstraction", // painting images 10
+  "structure-of-the-sky", // painting images 11
+  "blue-horizon", // painting images 12
 ];
 
 // Homepage category preview.
@@ -100,13 +104,20 @@ export default function NewArrivals({
         />
       </div>
 
-      {/* Product Grid */}
-      <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:mt-12 sm:grid-cols-3 sm:gap-x-7 lg:mt-14 lg:gap-x-8 lg:gap-y-12">
-        {newestItems.map((entry) => (
+      {/* Product Grid — 2 cols mobile, 3 cols tablet, 4 cols desktop (3
+          rows × 4 with the 12 fixed paintings above), so it reads like an
+          evenly hung gallery wall instead of a long single strip. */}
+      <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:mt-12 sm:grid-cols-3 sm:gap-x-7 lg:mt-14 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-12">
+        {newestItems.map((entry, renderPosition) => (
           <ProductCard
             key={`${entry.category}-${entry.product.id}`}
             product={entry.product}
             index={entry.index}
+            // `entry.index` is this product's position in the full catalog
+            // (needed for the image filename), which is NOT the same as
+            // where it renders in THIS grid — so priority has to be passed
+            // explicitly here. First row (4 cards on desktop) loads eager.
+            priority={renderPosition < 4}
             category={entry.category}
           />
         ))}
