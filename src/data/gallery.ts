@@ -260,8 +260,8 @@ const handcraft: Product[] = [
     medium: "Decorative Resin",
   },
   {
-    id: "garuda-warrior-sculpture",
-    title: "Garuda Warrior Sculpture",
+    id: "ramayana-archer-sculpture",
+    title: "Ramayana Archer Sculpture",
     artist: "Satori Art Gallery",
     price: 75,
     medium: "Cast Metal",

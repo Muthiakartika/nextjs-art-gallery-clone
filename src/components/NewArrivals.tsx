@@ -69,8 +69,8 @@ const FIXED_HOMEPAGE_PAINTING_IDS = [
   "abstract-composition", // painting images 3
   "modern-pop-art", // painting images 4
   "the-fisherman", // painting images 5
-  "balinese-landscape", // painting images 7
-  "balinese-woman-with-olive-branch", // painting images 22
+  "harmony-in-bloom", // painting images 7
+  "autumn-reverie", // painting images 22
   "offering-procession", // painting images 6
   "abstract-balinese-figure", // painting images 8
   "serene-portrait", // painting images 9

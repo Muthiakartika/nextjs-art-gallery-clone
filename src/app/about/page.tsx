@@ -66,7 +66,7 @@ export default function AboutPage() {
         Today, Satori Art Gallery is home to a diverse collection of original
   paintings, handcrafted silver jewelry, and Balinese crafts. We work with
   local artisans and artists from Bali, as well as international artists,
-  to present original handmade creations for visitors and collectors.
+  to present original handmade creations for visitors and art enthusiasts.
         </p>
         </div>
       </div>

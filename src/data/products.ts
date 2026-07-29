@@ -53,8 +53,8 @@ export const products: Product[] = [
     medium: "Oil on Canvas",
   },
   {
-    id: "balinese-landscape",
-    title: "Balinese Landscape",
+    id: "harmony-in-bloom",
+    title: "Harmony in Bloom",
     artist: "Satori Art Gallery",
     price: 620,
     medium: "Oil on Canvas",
@@ -158,8 +158,8 @@ export const products: Product[] = [
     medium: "Oil on Canvas",
   },
   {
-    id: "balinese-woman-with-olive-branch",
-    title: "Balinese Woman with Olive Branch",
+    id: "autumn-reverie",
+    title: "Autumn Reverie",
     artist: "Satori Art Gallery",
     price: 550,
     medium: "Oil on Canvas",

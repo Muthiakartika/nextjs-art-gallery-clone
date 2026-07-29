@@ -11,7 +11,11 @@ const CSP = [
   "default-src 'self'",
   // next/font self-hosts fonts at build time and Tailwind/inline style
   // attributes (Hero.tsx's gradient + animation timing) need 'unsafe-inline'.
-  "style-src 'self' 'unsafe-inline'",
+  // fonts.googleapis.com is added defensively — this project's own fonts
+  // are self-hosted via next/font, but a browser extension or a widget
+  // occasionally tries to load a Google Fonts stylesheet, which otherwise
+  // gets blocked and can look like a broken layout.
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   // Next.js's own bundled/hydration scripts + the Behold Instagram widget
   // + Cloudflare Turnstile (contact form anti-bot check).
   // 'unsafe-eval' is added ONLY in dev (`npm run dev`) because React's
@@ -24,6 +28,11 @@ const CSP = [
   // source is low-risk (an <img> can't execute code the way a script can)
   // and avoids the feed silently breaking again after a Behold-side change.
   "img-src 'self' data: https:",
+  // next/font self-hosts fonts at build time as local files, but some
+  // third-party widgets (Behold, browser extensions) inline fonts via
+  // base64 data: URIs — without this, those get silently blocked and can
+  // look like "images don't load" since a missing font can break layout.
+  "font-src 'self' data: https://fonts.gstatic.com",
   "frame-src https://www.google.com https://challenges.cloudflare.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
@@ -69,6 +78,16 @@ const nextConfig: NextConfig = {
         hostname: "loremflickr.com",
       },
     ],
+    // Situs ini di-hosting di Vercel, dan kuota gratis "Image Optimization"
+    // bulanannya sudah habis — begitu itu terjadi, Vercel membalas SEMUA
+    // request /_next/image dengan 402 Payment Required, jadi gambar
+    // berhenti muncul sama sekali di production. `unoptimized: true`
+    // mematikan pipeline optimasi itu (next/image jadi cuma <img> biasa,
+    // tanpa resize/convert WebP otomatis) supaya gambar tetap tampil tanpa
+    // tergantung kuota. Kalau nanti upgrade plan Vercel (atau pasang
+    // Cloudflare di depan untuk cache gambar di edge), baris ini aman
+    // dihapus lagi untuk kembali dapat optimasi otomatisnya.
+    unoptimized: true,
   },
 
   // Terapkan header keamanan di atas ke SEMUA route — situs ini statis,
