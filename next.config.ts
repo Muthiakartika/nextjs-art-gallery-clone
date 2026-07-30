@@ -69,6 +69,8 @@ const nextConfig: NextConfig = {
         hostname: "loremflickr.com",
       },
     ],
+
+    unoptimized: true,
   },
 
   // Terapkan header keamanan di atas ke SEMUA route — situs ini statis,
