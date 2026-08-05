@@ -17,12 +17,16 @@ const CSP = [
   // gets blocked and can look like a broken layout.
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   // Next.js's own bundled/hydration scripts + the Behold Instagram widget
-  // + Cloudflare Turnstile (contact form anti-bot check).
+  // + Cloudflare Turnstile (contact form anti-bot check) + Google Tag
+  // Manager/Analytics/Ads (loaded via Cloudflare Zaraz, set up outside
+  // this codebase in the Cloudflare dashboard — no code here calls these
+  // directly, but the CSP still has to allow them or Zaraz can't inject
+  // its tags).
   // 'unsafe-eval' is added ONLY in dev (`npm run dev`) because React's
   // Fast Refresh/dev tooling uses eval() for its debugging call stacks —
   // production builds never use eval(), so prod stays strict.
-  `script-src 'self' 'unsafe-inline' https://w.behold.so https://challenges.cloudflare.com${isDev ? " 'unsafe-eval'" : ""}`,
-  "connect-src 'self' https://*.behold.so https://challenges.cloudflare.com",
+  `script-src 'self' 'unsafe-inline' https://w.behold.so https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://static.cloudflareinsights.com${isDev ? " 'unsafe-eval'" : ""}`,
+  "connect-src 'self' https://*.behold.so https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://googleads.g.doubleclick.net https://static.cloudflareinsights.com https://cloudflareinsights.com",
   // Behold proxies Instagram photos through its own CDN, but which exact
   // subdomain it uses can change without notice — allowing any HTTPS image
   // source is low-risk (an <img> can't execute code the way a script can)
@@ -33,7 +37,7 @@ const CSP = [
   // base64 data: URIs — without this, those get silently blocked and can
   // look like "images don't load" since a missing font can break layout.
   "font-src 'self' data: https://fonts.gstatic.com",
-  "frame-src https://www.google.com https://challenges.cloudflare.com",
+  "frame-src https://www.google.com https://challenges.cloudflare.com https://googleads.g.doubleclick.net https://td.doubleclick.net",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
