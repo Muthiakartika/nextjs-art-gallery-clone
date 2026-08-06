@@ -5,7 +5,13 @@ export type MegaColumn = { title: string; links: SubLink[] };
 export type NavItem = { label: string; href: string; columns?: MegaColumn[] };
 
 export const ANNOUNCEMENT =
-  "Original Art from Our Bali Studio — Worldwide Shipping Available";
+  "Price upon request — Contact our gallery via WhatsApp for pricing and availability.";
+
+// Phones only: the full sentence wraps to three uppercase lines inside the
+// sticky header, so the short form keeps the bar to a single row.
+export const ANNOUNCEMENT_SHORT = "Price upon request";
+
+export const WHATSAPP_URL = "https://wa.me/6289508117898";
 
 // Derived from the same category data used on the Gallery/Products pages,
 // so the "Our Product" mega menu can never list a category name that

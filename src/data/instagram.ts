@@ -1,61 +1,67 @@
-import { dummyImageUrl } from "@/lib/dummyImage";
-
 const PROFILE_URL = "https://www.instagram.com/satoriartgallery/";
 
 export type InstagramPost = {
   id: string;
-  // Final image URL for this post. Right now every entry below builds this
-  // from dummyImageUrl() (no real photos yet — see CLAUDE.md), but
-  // InstagramFeed.tsx only ever reads `imageUrl` as a plain string, so
-  // swapping in a real Instagram integration later is just a matter of
-  // pointing this at that post's real `media_url` — no component changes.
+  // Path to a real file under /public — these are NOT pulled from Instagram.
+  // The section used to render a third-party feed widget (behold.so) that
+  // fetched live posts; the client picked these six pieces by hand instead,
+  // so they're plain local images like every other photo on the site.
+  //
+  // These point at /img/instagram/, which holds 960x1200 WebP copies of the
+  // originals in /img/painting/. next.config.ts sets `unoptimized: true`, so
+  // next/image ships whatever file is named here at full size — the 1080x1350
+  // PNG originals are 1.9-3.2 MB each (14 MB for the six), far too heavy for
+  // tiles that render at ~433px. Swapping an image here means generating a
+  // matching WebP too, not just repointing the path.
   imageUrl: string;
   caption: string;
-  // Link for this specific post. Dummy data has no real per-post page, so
-  // every entry falls back to the profile URL for now; a real integration
-  // would set this to that post's actual `permalink` from the Graph API.
+  // No live feed means no real per-post permalink, so every tile opens the
+  // gallery's Instagram profile.
   permalink: string;
 };
 
-// Dummy Instagram feed data for the homepage section. There's no real
-// Instagram API/access token wired up (no backend in this project — see
-// CLAUDE.md), so this just stands in for posts that would normally come
-// from the Instagram Graph API.
 export const instagramPosts: InstagramPost[] = [
   {
+    // from painting images 20.png
     id: "ig-1",
-    imageUrl: dummyImageUrl(20, 400, 400, "artstudio,painter,canvas"),
-    caption: "Fresh coat of varnish drying in the studio",
+    imageUrl: "/img/instagram/instagram-1.webp",
+    caption: "Bold lines and colour — a contemporary face study on canvas",
     permalink: PROFILE_URL,
   },
   {
+    // from painting images 24.png
     id: "ig-2",
-    imageUrl: dummyImageUrl(21, 400, 400, "silversmith,jewelry,ring"),
-    caption: "Hand-forging a new silver ring in Celuk",
+    imageUrl: "/img/instagram/instagram-2.webp",
+    caption: "Goldfish, blossoms and a pair of blue frames",
     permalink: PROFILE_URL,
   },
   {
+    // from painting images 22.png
     id: "ig-3",
-    imageUrl: dummyImageUrl(22, 400, 400, "painting,easel,art"),
-    caption: "Rice terrace study, still on the easel",
+    imageUrl: "/img/instagram/instagram-3.webp",
+    caption: "Warm reds against soft olive leaves",
     permalink: PROFILE_URL,
   },
   {
+    // from painting images 17.png
     id: "ig-4",
-    imageUrl: dummyImageUrl(23, 400, 400, "artstudio,painting,frame"),
-    caption: "Packing a painting for shipping to London",
+    imageUrl: "/img/instagram/instagram-4.webp",
+    caption: "Hand-stitched geometry, square by square",
     permalink: PROFILE_URL,
   },
   {
+    // from painting images 10.png
     id: "ig-5",
-    imageUrl: dummyImageUrl(24, 400, 400, "weaving,textile,craft"),
-    caption: "Weaving detail on a new ikat wall hanging",
+    imageUrl: "/img/instagram/instagram-5.webp",
+    caption:
+      "Vintage sepia portrait of a Balinese dancer in a flower headdress",
     permalink: PROFILE_URL,
   },
   {
+    // from painting images 14.png
     id: "ig-6",
-    imageUrl: dummyImageUrl(25, 400, 400, "artstudio,architecture,bali"),
-    caption: "Golden hour over the studio courtyard",
+    imageUrl: "/img/instagram/instagram-6.webp",
+    caption: "Working the rice fields, painted in soft washes",
     permalink: PROFILE_URL,
   },
 ];

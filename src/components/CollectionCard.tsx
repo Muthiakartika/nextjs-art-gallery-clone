@@ -12,7 +12,7 @@ import type { Collection } from "@/data/collections";
  * untuk menjaga konsistensi visual di seluruh halaman.
  */
 const COLLECTION_IMAGE_MAP: Record<string, string> = {
-  paintings: "/img/hero/hero painting 2.jpg",
+  paintings: "/img/hero/hero painting banner.jpg",
   "silver-jewelry": "/img/hero/hero silver 1.jpg",
   handcraft: "/img/hero/hero craft  1.jpg",
 };

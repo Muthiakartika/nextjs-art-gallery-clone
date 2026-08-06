@@ -97,10 +97,10 @@ export default function Footer() {
               </p>
               <p>
                 <a
-                  href="mailto:hello@satoriartgallery.com"
+                  href="mailto:andreasbussat16@gmail.com"
                   className="transition-colors hover:text-accent"
                 >
-                  hello@satoriartgallery.com
+                  andreasbussat16@gmail.com
                 </a>
               </p>
             </address>

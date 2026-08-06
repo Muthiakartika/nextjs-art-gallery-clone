@@ -29,7 +29,9 @@ export default function ClosingCTA() {
                   Get In Touch
                 </span>
 
-                <h2 className="mt-4 text-3xl font-medium leading-tight text-white lg:text-4xl">
+                {/* text-balance to match the SectionHeading titles — this
+                    section has its own <h2> rather than using that component. */}
+                <h2 className="mt-4 text-balance text-3xl font-medium leading-tight text-white lg:text-4xl">
                   Looking for something special?
                 </h2>
 
@@ -43,7 +45,7 @@ export default function ClosingCTA() {
                 <p className="mt-4 text-sm leading-7 text-white/60">
                   Visit Satori Art Gallery in Seminyak, Bali, or contact us for
                   personalized recommendations and assistance with your
-                  purchase.
+                  purchase. Your choice: Art delivered to your door, either rolled in a tube or mounted on a frame.
                 </p>
               </div>
 

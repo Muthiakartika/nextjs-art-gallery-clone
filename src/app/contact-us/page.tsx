@@ -107,7 +107,7 @@ export default function ContactUsPage() {
             </h3>
 
             <div className="mt-3 space-y-2 text-sm text-text-secondary">
-              <p>hello@satoriartgallery.com</p>
+              <p>andreasbussat16@gmail.com</p>
               <p>+62 895 0811 7898</p>
             </div>
           </div>

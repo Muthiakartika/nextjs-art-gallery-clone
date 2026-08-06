@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 // Content-Security-Policy: 'self' plus only the specific third-party
-// origins this site actually calls out to. If the Instagram feed
-// (BeholdFeed) or Google Maps embed ever shows a blank/broken widget after
+// origins this site actually calls out to. If the Google Maps embed or the
+// contact form's Turnstile check ever shows a blank/broken widget after
 // changing this, open the browser console — CSP violations are logged
 // there with the exact blocked domain, which then needs adding below.
 const isDev = process.env.NODE_ENV !== "production";
@@ -16,24 +16,33 @@ const CSP = [
   // occasionally tries to load a Google Fonts stylesheet, which otherwise
   // gets blocked and can look like a broken layout.
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  // Next.js's own bundled/hydration scripts + the Behold Instagram widget
-  // + Cloudflare Turnstile (contact form anti-bot check).
+  // Next.js's own bundled/hydration scripts + Cloudflare Turnstile (contact
+  // form anti-bot check) + Google Tag Manager/Analytics/Ads (loaded via
+  // Cloudflare Zaraz, set up outside this codebase in the Cloudflare
+  // dashboard — no code here calls these directly, but the CSP still has to
+  // allow them or Zaraz can't inject its tags).
   // 'unsafe-eval' is added ONLY in dev (`npm run dev`) because React's
   // Fast Refresh/dev tooling uses eval() for its debugging call stacks —
   // production builds never use eval(), so prod stays strict.
-  `script-src 'self' 'unsafe-inline' https://w.behold.so https://challenges.cloudflare.com${isDev ? " 'unsafe-eval'" : ""}`,
-  "connect-src 'self' https://*.behold.so https://challenges.cloudflare.com",
-  // Behold proxies Instagram photos through its own CDN, but which exact
-  // subdomain it uses can change without notice — allowing any HTTPS image
-  // source is low-risk (an <img> can't execute code the way a script can)
-  // and avoids the feed silently breaking again after a Behold-side change.
-  "img-src 'self' data: https:",
-  // next/font self-hosts fonts at build time as local files, but some
-  // third-party widgets (Behold, browser extensions) inline fonts via
-  // base64 data: URIs — without this, those get silently blocked and can
-  // look like "images don't load" since a missing font can break layout.
+  `script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://static.cloudflareinsights.com${isDev ? " 'unsafe-eval'" : ""}`,
+  "connect-src 'self' https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://googleads.g.doubleclick.net https://static.cloudflareinsights.com https://cloudflareinsights.com",
+  // Every photo on this site is a local file under /public, so 'self'
+  // covers the site itself. loremflickr.com is kept in step with the
+  // `remotePatterns` entry below (ui/Placeholder.tsx builds dummy photo
+  // URLs from it). The Google/DoubleClick hosts are there for the tracking
+  // pixels Zaraz fires as <img> beacons.
+  //
+  // NOTE: Google Ads remarketing also pixels country-specific domains
+  // (google.co.id, google.de, …) and CSP can't wildcard a TLD. If Ads
+  // conversion/remarketing data goes quiet, check the console for blocked
+  // google.<tld> image requests and add the ones you actually use.
+  "img-src 'self' data: https://loremflickr.com https://www.google.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://td.doubleclick.net https://stats.g.doubleclick.net",
+  // next/font self-hosts fonts at build time as local files, but browser
+  // extensions and embedded widgets occasionally inline fonts via base64
+  // data: URIs — without this, those get silently blocked and can look like
+  // "images don't load", since a missing font can break layout.
   "font-src 'self' data: https://fonts.gstatic.com",
-  "frame-src https://www.google.com https://challenges.cloudflare.com",
+  "frame-src https://www.google.com https://challenges.cloudflare.com https://googleads.g.doubleclick.net https://td.doubleclick.net",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

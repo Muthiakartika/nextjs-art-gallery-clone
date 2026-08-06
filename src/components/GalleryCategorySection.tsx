@@ -10,13 +10,13 @@ export default function GalleryCategorySection({
   category: GalleryCategory;
 }) {
   return (
-    <section
+     <section
       id={category.id}
       className="scroll-mt-32 border-t border-border py-section first:border-t-0 first:pt-0"
     >
       <SectionHeading
-        align="left"
-        eyebrow="Category"
+        align="center"
+        // eyebrow="Category"
         title={category.title}
         description={category.description}
       />

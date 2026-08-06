@@ -99,7 +99,7 @@ export default function NewArrivals({
       <div className="flex justify-center">
         <SectionHeading
           eyebrow="New Arrivals"
-          title={`Newest ${category.title}`}
+          title={`Authentic Art, Fairly Valued`}
           description="Explore the latest original paintings by local and international artists, now available at our gallery in Seminyak."
         />
       </div>

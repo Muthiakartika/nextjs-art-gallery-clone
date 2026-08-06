@@ -26,7 +26,9 @@ export default function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2 className="font-semibold tracking-tight text-text">
+      {/* text-balance evens out the line lengths so a heading that wraps on
+          narrow phones doesn't leave a single orphan word on the last line. */}
+      <h2 className="text-balance font-semibold tracking-tight text-text">
         {title}
       </h2>
       {description && (
