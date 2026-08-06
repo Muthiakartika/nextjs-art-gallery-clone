@@ -100,6 +100,7 @@ export default function NewArrivals({
         <SectionHeading
           eyebrow="New Arrivals"
           title={`Authentic Art, Fairly Valued`}
+          tagline="Price upon request — Contact our gallery via WhatsApp for pricing and availability."
           description="Explore the latest original paintings by local and international artists, now available at our gallery in Seminyak."
         />
       </div>

@@ -3,6 +3,7 @@ import { Cormorant, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const cormorant = Cormorant({
   variable: "--font-cormorant",
@@ -46,6 +47,8 @@ export default function RootLayout({
         {/* Footer is rendered globally from the Root Layout, so every page
             gets it automatically without importing it individually. */}
         <Footer />
+        {/* Floating chat button — global, same as Navbar/Footer. */}
+        <WhatsAppFloat />
       </body>
     </html>
   );

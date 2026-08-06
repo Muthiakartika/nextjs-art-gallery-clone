@@ -5,11 +5,12 @@ export type MegaColumn = { title: string; links: SubLink[] };
 export type NavItem = { label: string; href: string; columns?: MegaColumn[] };
 
 export const ANNOUNCEMENT =
-  "Price upon request — Contact our gallery via WhatsApp for pricing and availability.";
+  "Original Art from Our Bali Studio — Worldwide Shipping Available";
 
-// Phones only: the full sentence wraps to three uppercase lines inside the
-// sticky header, so the short form keeps the bar to a single row.
-export const ANNOUNCEMENT_SHORT = "Price upon request";
+// Phones only: the full sentence wraps to several uppercase lines inside the
+// sticky header, so the short form keeps the bar to a single row alongside
+// the WhatsApp button.
+export const ANNOUNCEMENT_SHORT = "Original Bali Art";
 
 export const WHATSAPP_URL = "https://wa.me/6289508117898";
 

@@ -7,7 +7,9 @@ import Reviews from "@/components/Reviews";
 import InstagramFeed from "@/components/InstagramFeed";
 import { galleryCategories } from "@/data/gallery";
 import ClosingCTA from "@/components/ClosingCTA";
-import LocationMap from "@/components/LocationMap";
+// LocationMap is intentionally not imported — see the note where it used to
+// render, below.
+// import LocationMap from "@/components/LocationMap";
 
 export default function Home() {
   return (
@@ -28,9 +30,14 @@ export default function Home() {
       {/* Instagram feed comes before Reviews (client revision). */}
       <InstagramFeed />
       <Reviews />
-      {/* Studio location (Google Map) — sits right before the Closing CTA
-          so "here's where we are" leads straight into "come visit / reach out". */}
-      <LocationMap />
+      {/* Studio location (Google Map) used to sit here, before the Closing
+          CTA. It's hidden by NOT RENDERING it rather than with CSS: a
+          `hidden`/`display:none` wrapper still ships the address, hours and
+          map iframe in the HTML, and Google indexes markup it can parse
+          regardless of whether it's painted. Leaving the JSX out entirely is
+          what actually keeps it off the page and out of the crawl.
+          src/components/LocationMap.tsx is untouched — restore this line and
+          the import at the top to bring it back. */}
       <ClosingCTA />
     </Container>
   );
