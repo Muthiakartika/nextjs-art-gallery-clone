@@ -61,10 +61,10 @@ export default function ContactUsPage() {
             <div className="mt-3 space-y-2 text-sm text-text-secondary">
               <p>
                 <a
-                  href="mailto:hello@satoriartgallery.com"
+                  href="mailto:andreasbussat16@gmail.com"
                   className="hover:text-accent"
                 >
-                  hello@satoriartgallery.com
+                  andreasbussat16@gmail.com
                 </a>
               </p>
 
