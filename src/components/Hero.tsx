@@ -16,6 +16,8 @@ const HERO_IMAGES = [
   { src: "/img/hero/hero craft  1.jpg", alt: "Craft Collection" },
   { src: "/img/hero/hero silver 1.jpg", alt: "Silver Collection" },
   { src: "/img/hero/shop image 3.jpg", alt: "Shop Image with Statue Collection" },
+  { src: "/img/hero/new painting balinese.jpg", alt: "Balinese" },
+  { src: "/img/hero/new painting balinese farmer.jpg", alt: "Balinese farmer" },  
 ];
 
 // Durasi satu siklus penuh slideshow (detik)
