@@ -97,11 +97,22 @@ export default function NewArrivals({
     <section className="pb-[0px] py-section">
       {/* Section Heading */}
       <div className="flex justify-center">
+        {/* Homepage-only sizing, passed in rather than changed inside
+            SectionHeading so every other section keeps its defaults.
+            Exact px (not the text-* scale) because the client specified the
+            sizes; the smaller mobile step keeps 25px bold from swallowing a
+            375px screen. Weight and slant carry the hierarchy here — the
+            pricing promise is bold and upright, the blurb below it italic. */}
         <SectionHeading
           eyebrow="New Arrivals"
           title={`Authentic Art, Fairly Valued`}
           tagline="Price upon request — Contact our gallery via WhatsApp for pricing and availability."
+          taglineClassName="text-[19px] font-semibold text-muted sm:text-[23px]"
           description="Explore the latest original paintings by local and international artists, now available at our gallery in Seminyak."
+          // text-balance here (not in SectionHeading) so only this section
+          // changes: at 375px the blurb otherwise drops "Seminyak." onto a
+          // line of its own.
+          descriptionClassName="text-balance text-[16px] italic sm:text-[18px]"
         />
       </div>
 
