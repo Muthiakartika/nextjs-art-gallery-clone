@@ -23,6 +23,21 @@ const CATEGORY_IMAGE_MAP: Record<string, { folder: string; pattern: string }> =
   };
 
 /**
+ * PENGECUALIAN EKSTENSI FILE
+ * ==========================
+ * Default semua kategori adalah .png (lihat `imagePath` di bawah). Kalau ada
+ * karya yang dikirim ulang dalam format lain, daftarkan di sini alih-alih
+ * mengkonversi paksa file-nya — supaya file yang di-render benar-benar file
+ * yang dikirim, bukan hasil konversi yang bisa menurunkan kualitas.
+ *
+ * Kunci: "<slug kategori>/<nomor gambar>" — nomor gambar 1-based, sama dengan
+ * yang dipakai membangun nama file (index produk + 1).
+ */
+const IMAGE_EXT_OVERRIDES: Record<string, string> = {
+  "paintings/16": "jpg", // "Coral Transition" — dikirim ulang sebagai .jpg
+};
+
+/**
  * KOMPONEN KARTU PRODUK (ProductCard)
  * ===================================
  * Komponen reusable yang menampilkan satu item produk dalam bentuk kartu.
@@ -64,7 +79,8 @@ export default function ProductCard({
 
   // Bangun path gambar lengkap dari folder public
   // Contoh hasil: "/img/painting/painting images 1.png"
-  const imagePath = `/img/${categoryMap.folder}/${categoryMap.pattern} ${imageNum}.png`;
+  const ext = IMAGE_EXT_OVERRIDES[`${category}/${imageNum}`] ?? "png";
+  const imagePath = `/img/${categoryMap.folder}/${categoryMap.pattern} ${imageNum}.${ext}`;
 
   return (
     <Link
