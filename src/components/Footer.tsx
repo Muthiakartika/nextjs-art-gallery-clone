@@ -19,6 +19,18 @@ const socialLinks: FooterLink[] = [
   { label: "Instagram", href: "https://www.instagram.com/satoriartgallery/" },
 ];
 
+// "Our Product" adalah induk mega menu: href-nya "#" dan daftar kategorinya
+// cuma muncul sebagai dropdown di navbar. Di footer yang tidak punya dropdown,
+// item itu jadi tautan mati yang tidak membuka halaman apa pun, jadi setiap
+// item ber-`columns` disaring di sini.
+//
+// Menyaring, BUKAN menghapus dari NAV_ITEMS: konstanta itu dipakai bareng
+// DesktopNav dan MobileDrawer, jadi menghapusnya di sana akan ikut
+// menghilangkan mega menu "Our Product" dari navbar. Menyaring lewat
+// `columns` (bukan mencocokkan label) juga bikin ini otomatis benar kalau
+// nanti ada item dropdown baru ditambahkan.
+const footerNavLinks = NAV_ITEMS.filter((item) => !item.columns);
+
 function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
   return (
     <div>
@@ -72,9 +84,10 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Column 2: reuses the same NAV_ITEMS as the navbar, so the
-              footer menu can never drift out of sync with the real nav. */}
-          <FooterColumn title="Main Navigation" links={NAV_ITEMS} />
+          {/* Column 2: reuses the same NAV_ITEMS as the navbar (minus the
+              dropdown-only entries), so the footer menu can never drift out
+              of sync with the real nav. */}
+          <FooterColumn title="Main Navigation" links={footerNavLinks} />
 
           {/* Column 3: contact details (no Instagram here — see the
               separate Social Media column). */}
