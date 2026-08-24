@@ -36,7 +36,14 @@ const CSP_DIRECTIVES = [
   // GA4 sends its hits here. The region endpoints (region1.google-analytics
   // .com and friends) are why the wildcards matter — a bare
   // www.google-analytics.com silently drops traffic from other regions.
-  "connect-src 'self' https://challenges.cloudflare.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://googleads.g.doubleclick.net https://static.cloudflareinsights.com https://cloudflareinsights.com",
+  //
+  // www.google.com and ad.doubleclick.net are for Google's Consent Mode
+  // conversion pings (/ccm/collect and /ccm/s/collect), fired whenever a
+  // Google Ads Conversion Tracking tag reports a conversion (e.g. the
+  // WhatsApp click conversion). Separate hosts from googleads.g.doubleclick
+  // .net above — without these two, the GTM tag reports "Failed" even
+  // though its own config is correct.
+  "connect-src 'self' https://challenges.cloudflare.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://googleads.g.doubleclick.net https://www.google.com https://ad.doubleclick.net https://static.cloudflareinsights.com https://cloudflareinsights.com",
   // Every photo on this site is a local file under /public, so 'self'
   // covers the site itself. loremflickr.com is kept in step with the
   // `remotePatterns` entry below (ui/Placeholder.tsx builds dummy photo
